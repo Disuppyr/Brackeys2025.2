@@ -4,4 +4,5 @@ func _ready() -> void:
 	$Button.grab_focus();
 
 func end_interact():
-	queue_free()
+	get_tree().call_group("player", "end_interact");
+	queue_free();
