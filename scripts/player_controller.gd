@@ -18,7 +18,7 @@ enum PlayerState {
 var player_state : PlayerState = PlayerState.MOVING;
 var normalized_input : Vector2 = Vector2.ZERO;
 var square_velocity : Vector2 = Vector2.ZERO;
-var look_pos : Vector2 = Vector2.ZERO;
+var facing_left : bool = false;
 var interactable : Object = null;
 var interacting : Object = null;
 
@@ -52,6 +52,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			square_velocity *= slowdown_multiplier;
 		velocity = Vector2(square_velocity.x, square_velocity.y * 0.5);
+		if velocity.x > 0 && facing_left:
+			facing_left = false;
+		if velocity.x < 0 && !facing_left:
+			facing_left = true;
 		move_and_slide();
 
 func _on_area_2D_entered(area: Area2D) -> void:

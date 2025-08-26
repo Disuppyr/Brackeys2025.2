@@ -1,16 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://1c80ix7eiods"]
+[gd_scene load_steps=5 format=3 uid="uid://1c80ix7eiods"]
 
-[ext_resource type="PackedScene" uid="uid://dyw1bdr0066uq" path="res://nodes/entities/player.tscn" id="1_g7g4h"]
 [ext_resource type="PackedScene" uid="uid://ca65mxks3rw6t" path="res://nodes/entities/static_interactable.tscn" id="2_j8ivh"]
+[ext_resource type="PackedScene" uid="uid://dbfa4xtpn7q2t" path="res://nodes/entities/combat_player.tscn" id="3_7ddre"]
 [ext_resource type="PackedScene" uid="uid://drc8mg44qb84g" path="res://nodes/ui/interact_buttons.tscn" id="3_nd71p"]
+[ext_resource type="PackedScene" uid="uid://dnfk7afx3o7ys" path="res://nodes/entities/enemy.tscn" id="4_qjeyg"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_g7g4h")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="StaticBody2D" parent="." instance=ExtResource("2_j8ivh")]
 position = Vector2(-242, 59)
 interact_menu = ExtResource("3_nd71p")
+
+[node name="Area2D2" parent="." instance=ExtResource("4_qjeyg")]
+position = Vector2(148, 182)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_7ddre")]

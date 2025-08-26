@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://p8bx1t5pamk1"]
 
-[ext_resource type="Script" uid="uid://bchjkkt6ug3ch" path="res://projectile_attack.gd" id="1_2hj7q"]
+[ext_resource type="Script" uid="uid://bchjkkt6ug3ch" path="res://scripts/projectile_attack.gd" id="1_2hj7q"]
 [ext_resource type="PackedScene" uid="uid://c8bi803y4mm21" path="res://nodes/objects/attacks/generic_attack.tscn" id="2_l6dy3"]
 
 [sub_resource type="Curve2D" id="Curve2D_hefdf"]
@@ -14,6 +14,7 @@ curve = SubResource("Curve2D_hefdf")
 script = ExtResource("1_2hj7q")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
 loop = false
 
 [node name="GenericAttack" parent="PathFollow2D" instance=ExtResource("2_l6dy3")]

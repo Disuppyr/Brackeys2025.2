@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbfa4xtpn7q2t"]
+
+[ext_resource type="Script" uid="uid://dmxqjg57lhdyl" path="res://scripts/combat_player_controller.gd" id="1_p1at1"]
+[ext_resource type="Texture2D" uid="uid://bs65f2550j30l" path="res://sprites/placeholder_square1.png" id="2_au2tq"]
+[ext_resource type="PackedScene" uid="uid://p8bx1t5pamk1" path="res://nodes/objects/attacks/generic_projectile_attack.tscn" id="2_gei8b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_473v0"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpfho"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1at1"]
+size = Vector2(500, 50)
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_p1at1")
+attack = ExtResource("2_gei8b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_473v0")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+y_sort_enabled = true
+shape = SubResource("RectangleShape2D_dpfho")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -32)
+scale = Vector2(4, 4)
+texture = ExtResource("2_au2tq")
+
+[node name="TargetingArea" type="Area2D" parent="."]
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetingArea"]
+position = Vector2(250, 0)
+shape = SubResource("RectangleShape2D_p1at1")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2D_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_exited"]
+[connection signal="area_entered" from="TargetingArea" to="." method="_on_targeting_area_entered"]
+[connection signal="area_exited" from="TargetingArea" to="." method="_on_targeting_area_exited"]
