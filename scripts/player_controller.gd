@@ -15,10 +15,10 @@ enum PlayerState {
 ## Spawn position for the player.
 @export var spawn_position : Vector2 = Vector2.ZERO;
 ## Hop physics settings
-@export var hop_force : float = 300.0;  # Initial upward force for hop
-@export var hop_gravity : float = 800.0;  # Gravity strength for hop
-@export var hop_cooldown : float = 0.3;  # Time between hops
-@export var hop_rotation_speed : float = 360.0;  # Rotation speed during hop (degrees per second)
+@export var hop_force : float = 150.0;  # Initial upward force for hop
+@export var hop_gravity : float = 1000.0;  # Gravity strength for hop
+@export var hop_cooldown : float = 0.1;  # Time between hops
+@export var hop_rotation_speed : float = 20.0;  # Rotation speed during hop (degrees per second)
 
 @onready var sprite : Sprite2D = $Sprite2D;  # Reference to the sprite node
 
