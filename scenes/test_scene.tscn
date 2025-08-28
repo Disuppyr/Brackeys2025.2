@@ -15,6 +15,11 @@ position = Vector2(-242, 59)
 interact_menu = ExtResource("3_nd71p")
 
 [node name="Area2D2" parent="." instance=ExtResource("4_qjeyg")]
+texture_filter = 1
 position = Vector2(148, 182)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_7ddre")]
+hop_force = 150.0
+hop_gravity = 1000.0
+hop_cooldown = 0.1
+hop_rotation_speed = 30.0

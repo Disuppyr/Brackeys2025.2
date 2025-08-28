@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="FortuneCookieCrookery"
+run/main_scene="uid://1c80ix7eiods"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [display]

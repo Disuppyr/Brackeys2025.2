@@ -14,6 +14,13 @@ enum PlayerState {
 @export_range(0, 1.0) var slowdown_multiplier : float = 0.7;
 ## Spawn position for the player.
 @export var spawn_position : Vector2 = Vector2.ZERO;
+## Hop physics settings
+@export var hop_force : float = 300.0;  # Initial upward force for hop
+@export var hop_gravity : float = 800.0;  # Gravity strength for hop
+@export var hop_cooldown : float = 0.3;  # Time between hops
+@export var hop_rotation_speed : float = 360.0;  # Rotation speed during hop (degrees per second)
+
+@onready var sprite : Sprite2D = $Sprite2D;  # Reference to the sprite node
 
 var player_state : PlayerState = PlayerState.MOVING;
 var normalized_input : Vector2 = Vector2.ZERO;
@@ -21,11 +28,17 @@ var square_velocity : Vector2 = Vector2.ZERO;
 var facing_left : bool = false;
 var interactable : Object = null;
 var interacting : Object = null;
+var hop_velocity_y : float = 0.0;  # Current vertical velocity for hopping
+var hop_cooldown_timer : float = 0.0;  # Timer for hop cooldown
+var is_on_ground : bool = true;  # Track if player is on ground
+var sprite_y_offset : float = 0.0;  # Vertical offset for sprite during hop
+var sprite_rotation : float = 0.0;  # Current rotation of sprite
+var rotation_direction : float = 1.0;  # Direction of rotation (1.0 for clockwise, -1.0 for counter-clockwise)
 
 func _enter_tree() -> void:
 	position = spawn_position;
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var move_input = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"));
 	if move_input.length() > 1.0:
 		move_input = move_input.normalized();
@@ -45,18 +58,59 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if player_state == PlayerState.MOVING:
+		# Update hop cooldown timer
+		hop_cooldown_timer -= delta;
+		
+		# Handle horizontal movement
 		if normalized_input.length() > 0.0:
 			square_velocity += normalized_input * walk_acceleration;
 			if square_velocity.length() > max_walk_speed:
 				square_velocity = square_velocity.normalized() * max_walk_speed;
+			
+			# Trigger hop if on ground and cooldown is over
+			if is_on_ground and hop_cooldown_timer <= 0.0:
+				hop_velocity_y = -hop_force;  # Negative for upward movement
+				is_on_ground = false;
+				hop_cooldown_timer = hop_cooldown;
+				# Alternate rotation direction for each hop
+				rotation_direction *= -1.0;
 		else:
 			square_velocity *= slowdown_multiplier;
+		
+		# Apply gravity to hop velocity and update sprite offset
+		if not is_on_ground:
+			hop_velocity_y += hop_gravity * delta;
+			sprite_y_offset += hop_velocity_y * delta;
+			
+			# Apply rotation during hop using the alternating direction
+			sprite_rotation += deg_to_rad(hop_rotation_speed) * rotation_direction * delta;
+			
+			# Check if sprite should land back on ground
+			if sprite_y_offset >= 0.0:
+				sprite_y_offset = 0.0;
+				hop_velocity_y = 0.0;
+				is_on_ground = true;
+				sprite_rotation = 0.0;  # Reset rotation when landing
+		else:
+			# Smoothly return rotation to 0 when on ground
+			if abs(sprite_rotation) > 0.01:
+				sprite_rotation = lerp(sprite_rotation, 0.0, 10.0 * delta);
+			else:
+				sprite_rotation = 0.0;
+		
+		# Set horizontal velocity and move (only the character body, not sprite)
 		velocity = Vector2(square_velocity.x, square_velocity.y * 0.5);
 		if velocity.x > 0 && facing_left:
 			facing_left = false;
 		if velocity.x < 0 && !facing_left:
 			facing_left = true;
 		move_and_slide();
+		
+		# Update sprite position, rotation, and horizontal flip
+		if sprite:
+			sprite.position.y = sprite_y_offset;
+			sprite.rotation = sprite_rotation;
+			sprite.flip_h = facing_left;
 
 func _on_area_2D_entered(area: Area2D) -> void:
 	if area as Interactable != null:

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbfa4xtpn7q2t"]
 
 [ext_resource type="Script" uid="uid://dmxqjg57lhdyl" path="res://scripts/combat_player_controller.gd" id="1_p1at1"]
-[ext_resource type="Texture2D" uid="uid://bs65f2550j30l" path="res://sprites/placeholder_square1.png" id="2_au2tq"]
 [ext_resource type="PackedScene" uid="uid://p8bx1t5pamk1" path="res://nodes/objects/attacks/generic_projectile_attack.tscn" id="2_gei8b"]
+[ext_resource type="Texture2D" uid="uid://8odklj87ivok" path="res://assets/BonnieDefault.png" id="3_au2tq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_473v0"]
 size = Vector2(64, 16)
@@ -31,9 +31,9 @@ shape = SubResource("RectangleShape2D_dpfho")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -32)
-scale = Vector2(4, 4)
-texture = ExtResource("2_au2tq")
+position = Vector2(0, -41)
+scale = Vector2(0.0670051, 0.0667774)
+texture = ExtResource("3_au2tq")
 
 [node name="TargetingArea" type="Area2D" parent="."]
 collision_mask = 16
