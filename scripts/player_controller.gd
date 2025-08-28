@@ -38,6 +38,9 @@ var sprite_y_offset : float = 0.0;  # Vertical offset for sprite during hop
 var sprite_rotation : float = 0.0;  # Current rotation of sprite
 var rotation_direction : float = 1.0;  # Direction of rotation (1.0 for clockwise, -1.0 for counter-clockwise)
 var squash_stretch_time : float = 0.0;  # Timer for squash/stretch animation
+var is_shooting : bool = false;  # Track if player is currently shooting
+var shoot_frame_duration : float = 0.2;  # How long to show the shooting frame
+var shoot_frame_timer : float = 0.0;  # Timer for shooting frame display
 
 func _enter_tree() -> void:
 	position = spawn_position;
@@ -65,6 +68,12 @@ func _physics_process(delta: float) -> void:
 		# Update timers
 		hop_cooldown_timer -= delta;
 		squash_stretch_time += delta;
+		
+		# Update shooting timer
+		if is_shooting:
+			shoot_frame_timer -= delta;
+			if shoot_frame_timer <= 0.0:
+				is_shooting = false;
 		
 		# Handle horizontal movement
 		if normalized_input.length() > 0.0:
@@ -117,8 +126,12 @@ func _physics_process(delta: float) -> void:
 			sprite.rotation = sprite_rotation;
 			sprite.flip_h = facing_left;
 			
-			# Set frame based on movement state
-			if normalized_input.length() > 0.0:
+			# Set frame based on current state (shooting takes priority)
+			if is_shooting:
+				sprite.frame = 3;  # Shooting frame
+				# Reset scale to normal when shooting
+				sprite.scale.y = sprite.scale.x;
+			elif normalized_input.length() > 0.0:
 				sprite.frame = 1;  # Moving frame
 				# Reset scale to normal when moving
 				sprite.scale.y = sprite.scale.x;
@@ -140,3 +153,8 @@ func end_interact():
 	player_state = PlayerState.MOVING;
 	interactable = interacting;
 	interacting = null;
+
+func trigger_shoot_animation():
+	"""Call this method when the player shoots to show frame 3"""
+	is_shooting = true;
+	shoot_frame_timer = shoot_frame_duration;

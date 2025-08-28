@@ -28,6 +28,8 @@ func _physics_process(delta: float) -> void:
 			attack_instance.position = Vector2(position.x + 48, position.y);
 		get_parent().add_child(attack_instance);
 		current_auto_attack_cooldown = auto_attack_cooldown;
+		# Trigger shooting animation
+		trigger_shoot_animation();
 
 func _on_targeting_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
