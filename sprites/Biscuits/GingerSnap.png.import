@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm8rneoa5g8al"
-path="res://.godot/imported/shootref.png-f27fcc2338a1ab8cb3a30b8b5a666fbf.ctex"
+uid="uid://bri5mcmapqmsb"
+path="res://.godot/imported/GingerSnap.png-224a0865a59e7e1fb136ce933691afc1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/AnimationReference/shootref.png"
-dest_files=["res://.godot/imported/shootref.png-f27fcc2338a1ab8cb3a30b8b5a666fbf.ctex"]
+source_file="res://sprites/Biscuits/GingerSnap.png"
+dest_files=["res://.godot/imported/GingerSnap.png-224a0865a59e7e1fb136ce933691afc1.ctex"]
 
 [params]
 

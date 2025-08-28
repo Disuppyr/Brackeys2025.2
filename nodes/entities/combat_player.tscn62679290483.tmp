@@ -1,10 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbfa4xtpn7q2t"]
+[gd_scene load_steps=19 format=3 uid="uid://dbfa4xtpn7q2t"]
 
 [ext_resource type="Script" uid="uid://dmxqjg57lhdyl" path="res://scripts/combat_player_controller.gd" id="1_p1at1"]
 [ext_resource type="PackedScene" uid="uid://p8bx1t5pamk1" path="res://nodes/objects/attacks/generic_projectile_attack.tscn" id="2_gei8b"]
-[ext_resource type="Texture2D" uid="uid://begjv8wxy82tc" path="res://sprites/AnimationReference/idleref.png" id="3_gei8b"]
-[ext_resource type="Texture2D" uid="uid://cylwswyg0bqkb" path="res://sprites/AnimationReference/runref.png" id="4_3fwwk"]
-[ext_resource type="Texture2D" uid="uid://cm8rneoa5g8al" path="res://sprites/AnimationReference/shootref.png" id="5_3fwwk"]
+[ext_resource type="Texture2D" uid="uid://begjv8wxy82tc" path="res://assets/AnimationReference/idleref.png" id="3_gei8b"]
+[ext_resource type="Texture2D" uid="uid://cylwswyg0bqkb" path="res://assets/AnimationReference/runref.png" id="4_3fwwk"]
+[ext_resource type="Texture2D" uid="uid://wgc6ikkswru6" path="res://assets/Explosion/Timeline 1_0000.png" id="4_mtyed"]
+[ext_resource type="Texture2D" uid="uid://cm8rneoa5g8al" path="res://assets/AnimationReference/shootref.png" id="5_3fwwk"]
+[ext_resource type="Texture2D" uid="uid://c02jij85n3t4y" path="res://assets/Explosion/Timeline 1_0001.png" id="5_mk0wr"]
+[ext_resource type="Texture2D" uid="uid://b7smkaytn241k" path="res://assets/Explosion/Timeline 1_0002.png" id="6_deg0a"]
+[ext_resource type="Texture2D" uid="uid://cm2hobxhf4u4v" path="res://assets/Explosion/Timeline 1_0003.png" id="7_eyg7e"]
+[ext_resource type="Texture2D" uid="uid://l4xx5jpqiydl" path="res://assets/Explosion/Timeline 1_0004.png" id="8_lysfl"]
+[ext_resource type="Texture2D" uid="uid://djhdmm0yfeqjq" path="res://assets/Explosion/Timeline 1_0005.png" id="9_k5n3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_473v0"]
 size = Vector2(64, 16)
@@ -14,6 +20,32 @@ size = Vector2(64, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2lckm"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gei8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mtyed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mk0wr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_deg0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_eyg7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lysfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_k5n3w")
+}],
+"loop": true,
+"name": &"death",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_gei8b")
@@ -73,7 +105,18 @@ _data = {
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_p1at1")
+auto_attack_cooldown = null
 attack = ExtResource("2_gei8b")
+walk_acceleration = null
+max_walk_speed = null
+slowdown_multiplier = null
+spawn_position = null
+hop_force = null
+hop_gravity = null
+hop_cooldown = null
+hop_rotation_speed = null
+squash_stretch_speed = null
+squash_stretch_amount = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_473v0")

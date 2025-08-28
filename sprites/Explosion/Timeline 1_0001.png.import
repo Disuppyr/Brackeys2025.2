@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7smkaytn241k"
-path="res://.godot/imported/Timeline 1_0002.png-e0ef53822fde33f9a6f860a6e27f5c26.ctex"
+uid="uid://c02jij85n3t4y"
+path="res://.godot/imported/Timeline 1_0001.png-904fa73cd989b8bd9bfa02a3b1d331d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Explosion/Timeline 1_0002.png"
-dest_files=["res://.godot/imported/Timeline 1_0002.png-e0ef53822fde33f9a6f860a6e27f5c26.ctex"]
+source_file="res://sprites/Explosion/Timeline 1_0001.png"
+dest_files=["res://.godot/imported/Timeline 1_0001.png-904fa73cd989b8bd9bfa02a3b1d331d3.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://begjv8wxy82tc"
-path="res://.godot/imported/idleref.png-95664922d0a74b2ab9abfd2da6e4c8fe.ctex"
+uid="uid://8odklj87ivok"
+path="res://.godot/imported/BonnieDefault.png-1619e46db4d57dfa954667d010d97d87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/AnimationReference/idleref.png"
-dest_files=["res://.godot/imported/idleref.png-95664922d0a74b2ab9abfd2da6e4c8fe.ctex"]
+source_file="res://sprites/BonnieDefault.png"
+dest_files=["res://.godot/imported/BonnieDefault.png-1619e46db4d57dfa954667d010d97d87.ctex"]
 
 [params]
 

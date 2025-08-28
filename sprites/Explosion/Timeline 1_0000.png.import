@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8odklj87ivok"
-path="res://.godot/imported/BonnieDefault.png-e179000ca0996af12760ac7359d9049f.ctex"
+uid="uid://wgc6ikkswru6"
+path="res://.godot/imported/Timeline 1_0000.png-661669dcd66606dfc1200b9114b7130b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/BonnieDefault.png"
-dest_files=["res://.godot/imported/BonnieDefault.png-e179000ca0996af12760ac7359d9049f.ctex"]
+source_file="res://sprites/Explosion/Timeline 1_0000.png"
+dest_files=["res://.godot/imported/Timeline 1_0000.png-661669dcd66606dfc1200b9114b7130b.ctex"]
 
 [params]
 

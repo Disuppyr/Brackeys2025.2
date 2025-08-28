@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpn8d1p52oowg"
-path="res://.godot/imported/placeholder_triangle1.png-4b0d261a869fe8e5175b40b70a0fdabc.ctex"
+uid="uid://bs65f2550j30l"
+path="res://.godot/imported/placeholder_square1.png-6e4f83d5c93d9bbb675ad0acaee45c88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/placeholder_triangle1.png"
-dest_files=["res://.godot/imported/placeholder_triangle1.png-4b0d261a869fe8e5175b40b70a0fdabc.ctex"]
+source_file="res://sprites/placeholder/placeholder_square1.png"
+dest_files=["res://.godot/imported/placeholder_square1.png-6e4f83d5c93d9bbb675ad0acaee45c88.ctex"]
 
 [params]
 

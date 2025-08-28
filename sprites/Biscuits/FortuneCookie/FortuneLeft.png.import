@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtbcjgkw6s4wi"
-path="res://.godot/imported/placeholder_circle2.png-9b02974b766e8484646c4cd0d9019880.ctex"
+uid="uid://dvobda4ix4pgf"
+path="res://.godot/imported/FortuneLeft.png-d571669f627efba0713ed7fdebdeba6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/placeholder_circle2.png"
-dest_files=["res://.godot/imported/placeholder_circle2.png-9b02974b766e8484646c4cd0d9019880.ctex"]
+source_file="res://sprites/Biscuits/FortuneCookie/FortuneLeft.png"
+dest_files=["res://.godot/imported/FortuneLeft.png-d571669f627efba0713ed7fdebdeba6e.ctex"]
 
 [params]
 

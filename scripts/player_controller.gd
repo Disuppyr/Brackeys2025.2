@@ -23,7 +23,7 @@ enum PlayerState {
 @export var squash_stretch_speed : float = 8.0;  # Speed of the squash/stretch oscillation
 @export var squash_stretch_amount : float = 0.2;  # How much to squash/stretch (0.2 = 20%)
 
-@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D;  # Reference to the animated sprite node
+@onready var sprite : AnimatedSprite2D = $Node2D/AnimatedSprite2D;  # Reference to the animated sprite node
 
 var player_state : PlayerState = PlayerState.MOVING;
 var normalized_input : Vector2 = Vector2.ZERO;
@@ -100,8 +100,8 @@ func _physics_process(delta: float) -> void:
 			sprite_rotation += deg_to_rad(hop_rotation_speed) * rotation_direction * delta;
 			
 			# Check if sprite should land back on ground
-			if sprite_y_offset >= 0.0:
-				sprite_y_offset = 0.0;
+			if sprite_y_offset >= 40.0:
+				sprite_y_offset = 40.0;
 				hop_velocity_y = 0.0;
 				is_on_ground = true;
 				sprite_rotation = 0.0;  # Reset rotation when landing

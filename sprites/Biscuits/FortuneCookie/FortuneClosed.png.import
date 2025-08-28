@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cylwswyg0bqkb"
-path="res://.godot/imported/runref.png-cdc9b3201f5c5478919e6bf1e5eaed27.ctex"
+uid="uid://dp21ukm2725xp"
+path="res://.godot/imported/FortuneClosed.png-ab3748a50048b47dfff74814f65b11fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/AnimationReference/runref.png"
-dest_files=["res://.godot/imported/runref.png-cdc9b3201f5c5478919e6bf1e5eaed27.ctex"]
+source_file="res://sprites/Biscuits/FortuneCookie/FortuneClosed.png"
+dest_files=["res://.godot/imported/FortuneClosed.png-ab3748a50048b47dfff74814f65b11fb.ctex"]
 
 [params]
 
