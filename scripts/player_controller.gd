@@ -19,8 +19,11 @@ enum PlayerState {
 @export var hop_gravity : float = 1000.0;  # Gravity strength for hop
 @export var hop_cooldown : float = 0.1;  # Time between hops
 @export var hop_rotation_speed : float = 20.0;  # Rotation speed during hop (degrees per second)
+## Squash and stretch settings
+@export var squash_stretch_speed : float = 8.0;  # Speed of the squash/stretch oscillation
+@export var squash_stretch_amount : float = 0.2;  # How much to squash/stretch (0.2 = 20%)
 
-@onready var sprite : Sprite2D = $Sprite2D;  # Reference to the sprite node
+@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D;  # Reference to the animated sprite node
 
 var player_state : PlayerState = PlayerState.MOVING;
 var normalized_input : Vector2 = Vector2.ZERO;
@@ -34,6 +37,7 @@ var is_on_ground : bool = true;  # Track if player is on ground
 var sprite_y_offset : float = 0.0;  # Vertical offset for sprite during hop
 var sprite_rotation : float = 0.0;  # Current rotation of sprite
 var rotation_direction : float = 1.0;  # Direction of rotation (1.0 for clockwise, -1.0 for counter-clockwise)
+var squash_stretch_time : float = 0.0;  # Timer for squash/stretch animation
 
 func _enter_tree() -> void:
 	position = spawn_position;
@@ -53,13 +57,14 @@ func _process(_delta: float) -> void:
 			player_state = PlayerState.INTERACTING;
 			velocity = Vector2.ZERO;
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
 	if player_state == PlayerState.MOVING:
-		# Update hop cooldown timer
+		# Update timers
 		hop_cooldown_timer -= delta;
+		squash_stretch_time += delta;
 		
 		# Handle horizontal movement
 		if normalized_input.length() > 0.0:
@@ -106,11 +111,22 @@ func _physics_process(delta: float) -> void:
 			facing_left = true;
 		move_and_slide();
 		
-		# Update sprite position, rotation, and horizontal flip
+		# Update sprite position, rotation, horizontal flip, frame, and squash/stretch
 		if sprite:
 			sprite.position.y = sprite_y_offset;
 			sprite.rotation = sprite_rotation;
 			sprite.flip_h = facing_left;
+			
+			# Set frame based on movement state
+			if normalized_input.length() > 0.0:
+				sprite.frame = 1;  # Moving frame
+				# Reset scale to normal when moving
+				sprite.scale.y = sprite.scale.x;
+			else:
+				sprite.frame = 0;  # Idle frame
+				# Apply squash and stretch oscillation only when idle
+				var squash_stretch_factor = 1.0 + sin(squash_stretch_time * squash_stretch_speed) * squash_stretch_amount;
+				sprite.scale.y = sprite.scale.x * squash_stretch_factor;
 
 func _on_area_2D_entered(area: Area2D) -> void:
 	if area as Interactable != null:
