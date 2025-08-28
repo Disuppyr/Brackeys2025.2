@@ -82,7 +82,6 @@ shape = SubResource("RectangleShape2D_dpfho")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, 43)
 scale = Vector2(0.0670051, 0.0667774)
 sprite_frames = SubResource("SpriteFrames_2lckm")
 offset = Vector2(0, -643.93)
