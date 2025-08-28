@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://1c80ix7eiods"]
+[gd_scene load_steps=6 format=3 uid="uid://1c80ix7eiods"]
 
 [ext_resource type="PackedScene" uid="uid://ca65mxks3rw6t" path="res://nodes/entities/static_interactable.tscn" id="2_j8ivh"]
 [ext_resource type="PackedScene" uid="uid://dbfa4xtpn7q2t" path="res://nodes/entities/combat_player.tscn" id="3_7ddre"]
 [ext_resource type="PackedScene" uid="uid://drc8mg44qb84g" path="res://nodes/ui/interact_buttons.tscn" id="3_nd71p"]
 [ext_resource type="PackedScene" uid="uid://dnfk7afx3o7ys" path="res://nodes/entities/enemy.tscn" id="4_qjeyg"]
+[ext_resource type="PackedScene" uid="uid://rlrfq8a7f6l5" path="res://nodes/ui/home_ui.tscn" id="5_qjeyg"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -21,3 +22,9 @@ position = Vector2(148, 182)
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_7ddre")]
 squash_stretch_speed = 4.0
 squash_stretch_amount = 0.05
+
+[node name="Home_ui" parent="." instance=ExtResource("5_qjeyg")]
+offset_left = -367.0
+offset_top = 189.0
+offset_right = -367.0
+offset_bottom = 189.0
