@@ -14,6 +14,10 @@ config/name="FortuneCookieCrookery"
 run/main_scene="uid://1c80ix7eiods"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[autoload]
+
+GlobalVars="*res://scripts/data/global_vars.gd"
+
 [display]
 
 window/size/viewport_width=800
