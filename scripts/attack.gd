@@ -31,7 +31,7 @@ func hit():
 			attack_end();
 
 func attack_end():
-	monitorable = false;
+	set_deferred("monitorable",false);
 	ending = true;
 	$AnimationPlayer.play("fade");
 

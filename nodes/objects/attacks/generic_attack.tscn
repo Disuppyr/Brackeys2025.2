@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8bi803y4mm21"]
+[gd_scene load_steps=7 format=3 uid="uid://c8bi803y4mm21"]
 
 [ext_resource type="Script" uid="uid://csf043anenhbb" path="res://scripts/attack.gd" id="1_0ewgo"]
-[ext_resource type="Texture2D" uid="uid://d24f2m65lowkm" path="res://sprites/placeholder_dot.png" id="2_ba6vu"]
 [ext_resource type="Texture2D" uid="uid://cm5lntdejc57e" path="res://assets/bullet.png" id="3_ba6vu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0rup0"]
@@ -19,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 0, 0, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_oy0u5"]
@@ -35,7 +34,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_14bgd"]
@@ -52,22 +51,15 @@ power = 1
 pierce = 1
 knockback = 20.0
 duration = 0.5
-sprite = ExtResource("2_ba6vu")
+sprite = ExtResource("3_ba6vu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0rup0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 0, 0, 1)
 texture_filter = 1
-position = Vector2(0, -32)
-scale = Vector2(4, 4)
-texture = ExtResource("2_ba6vu")
-
-[node name="Bullet" type="Sprite2D" parent="."]
-position = Vector2(0, -32)
-scale = Vector2(0.0903225, 0.0903226)
+position = Vector2(0, -63)
+scale = Vector2(0.0903226, 0.0903227)
 texture = ExtResource("3_ba6vu")
 
 [node name="Timer" type="Timer" parent="."]

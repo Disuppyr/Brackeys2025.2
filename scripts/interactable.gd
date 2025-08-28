@@ -7,5 +7,5 @@ extends Area2D
 class_name Interactable;
 
 ## Perform an action when interacted with by player
-func interact(player : Node):
+func interact(_player : Node):
 	pass
