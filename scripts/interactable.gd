@@ -9,3 +9,9 @@ class_name Interactable;
 ## Perform an action when interacted with by player
 func interact(_player : Node):
 	pass
+
+func enter_range():
+	pass
+
+func exit_range():
+	pass

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3k4hwy1xupyx"]
+
+[ext_resource type="Script" uid="uid://qe4q4qe2ddsg" path="res://scripts/stage_manager.gd" id="1_0udi1"]
+[ext_resource type="PackedScene" uid="uid://dkq5niclic8w" path="res://nodes/ui/stage_ui.tscn" id="2_xfw8j"]
+
+[node name="StageTemplate" type="Node2D"]
+script = ExtResource("1_0udi1")
+spawn_pos_left = Vector2(-450, 150)
+spawn_pos_right = Vector2(450, 150)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="StageUI" parent="Camera2D" instance=ExtResource("2_xfw8j")]
+offset_top = -300.0
+offset_bottom = -300.0

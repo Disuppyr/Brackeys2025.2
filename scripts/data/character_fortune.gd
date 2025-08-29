@@ -32,3 +32,22 @@ static func generate_fortune_bad(char : CharacterAttributes.Character):
 	new_fortune.character = char;
 	new_fortune.type = randi_range(5, 7);
 	return new_fortune;
+
+func get_fortune_text():
+	match(type):
+		CharacterFortuneType.LUCKY_CLOVER:
+			return "A good luck charm will protect you from misfortune.";
+		CharacterFortuneType.SKILLED:
+			return "Earn your peers' respect by showing them your true self.";
+		CharacterFortuneType.BAKING_SODA:
+			return "Today is a good day to treat yourself to something nice.";
+		CharacterFortuneType.BUBBLE:
+			return "Don't let the opinions of others sway your values.";
+		CharacterFortuneType.TRAINING_ARC:
+			return "The road to success is walked one step at a time.";
+		CharacterFortuneType.BLACK_CAT:
+			return "Be wary of succumbing to disease or injury.";
+		CharacterFortuneType.JAMMED:
+			return "A dull knife is no knife at all.";
+		CharacterFortuneType.JINXED:
+			return "Prepare yourself for an unexpected setback.";
