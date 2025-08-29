@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://drc8mg44qb84g"]
 
-[ext_resource type="Script" uid="uid://groa1jytoxel" path="res://scripts/interact_buttons.gd" id="1_r5gmu"]
+[ext_resource type="Script" uid="uid://groa1jytoxel" path="res://scripts/character_interact_ui.gd" id="1_r5gmu"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
 z_index = 1
