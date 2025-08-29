@@ -1,0 +1,166 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkq5niclic8w"]
+
+[ext_resource type="Script" uid="uid://dmqce7v7x2ix3" path="res://scripts/stage_ui.gd" id="1_860tx"]
+[ext_resource type="Texture2D" uid="uid://b7mf1a4nx0wfx" path="res://sprites/placeholder/placeholder_circle1.png" id="2_5fbep"]
+
+[node name="StageUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_860tx")
+
+[node name="StatsContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -286.0
+offset_top = 20.0
+offset_right = 286.0
+offset_bottom = 108.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BonnieStats" type="VBoxContainer" parent="StatsContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="StatsContainer/BonnieStats"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_5fbep")
+stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="StatsContainer/BonnieStats"]
+custom_minimum_size = Vector2(128, 8)
+layout_mode = 2
+color = Color(0.392157, 0.392157, 0.392157, 0.784314)
+
+[node name="hp_bar" type="ColorRect" parent="StatsContainer/BonnieStats/ColorRect"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+offset_right = 128.0
+offset_bottom = 8.0
+color = Color(0.392157, 1, 0.392157, 0.784314)
+
+[node name="ColorRect2" type="ColorRect" parent="StatsContainer/BonnieStats"]
+custom_minimum_size = Vector2(128, 8)
+layout_mode = 2
+color = Color(0.392157, 0.392157, 0.392157, 0.784314)
+
+[node name="energy_bar" type="ColorRect" parent="StatsContainer/BonnieStats/ColorRect2"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+offset_right = 128.0
+offset_bottom = 8.0
+color = Color(0.392157, 1, 1, 0.784314)
+
+[node name="JaneStats" type="VBoxContainer" parent="StatsContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="StatsContainer/JaneStats"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_5fbep")
+stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="StatsContainer/JaneStats"]
+custom_minimum_size = Vector2(128, 8)
+layout_mode = 2
+color = Color(0.392157, 0.392157, 0.392157, 0.784314)
+
+[node name="hp_bar" type="ColorRect" parent="StatsContainer/JaneStats/ColorRect"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+offset_right = 128.0
+offset_bottom = 8.0
+color = Color(0.392157, 1, 0.392157, 0.784314)
+
+[node name="ColorRect2" type="ColorRect" parent="StatsContainer/JaneStats"]
+custom_minimum_size = Vector2(128, 8)
+layout_mode = 2
+color = Color(0.392157, 0.392157, 0.392157, 0.784314)
+
+[node name="energy_bar" type="ColorRect" parent="StatsContainer/JaneStats/ColorRect2"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+offset_right = 128.0
+offset_bottom = 8.0
+color = Color(0.392157, 1, 1, 0.784314)
+
+[node name="PearlStats" type="VBoxContainer" parent="StatsContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="StatsContainer/PearlStats"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_5fbep")
+stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="StatsContainer/PearlStats"]
+custom_minimum_size = Vector2(128, 8)
+layout_mode = 2
+color = Color(0.392157, 0.392157, 0.392157, 0.784314)
+
+[node name="hp_bar" type="ColorRect" parent="StatsContainer/PearlStats/ColorRect"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+offset_right = 128.0
+offset_bottom = 8.0
+color = Color(0.392157, 1, 0.392157, 0.784314)
+
+[node name="ColorRect2" type="ColorRect" parent="StatsContainer/PearlStats"]
+custom_minimum_size = Vector2(128, 8)
+layout_mode = 2
+color = Color(0.392157, 0.392157, 0.392157, 0.784314)
+
+[node name="energy_bar" type="ColorRect" parent="StatsContainer/PearlStats/ColorRect2"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+offset_right = 128.0
+offset_bottom = 8.0
+color = Color(0.392157, 1, 1, 0.784314)
+
+[node name="RoseStats" type="VBoxContainer" parent="StatsContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="StatsContainer/RoseStats"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_5fbep")
+stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="StatsContainer/RoseStats"]
+custom_minimum_size = Vector2(128, 8)
+layout_mode = 2
+color = Color(0.392157, 0.392157, 0.392157, 0.784314)
+
+[node name="hp_bar" type="ColorRect" parent="StatsContainer/RoseStats/ColorRect"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+offset_right = 128.0
+offset_bottom = 8.0
+color = Color(0.392157, 1, 0.392157, 0.784314)
+
+[node name="ColorRect2" type="ColorRect" parent="StatsContainer/RoseStats"]
+custom_minimum_size = Vector2(128, 8)
+layout_mode = 2
+color = Color(0.392157, 0.392157, 0.392157, 0.784314)
+
+[node name="energy_bar" type="ColorRect" parent="StatsContainer/RoseStats/ColorRect2"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+offset_right = 128.0
+offset_bottom = 8.0
+color = Color(0.392157, 1, 1, 0.784314)

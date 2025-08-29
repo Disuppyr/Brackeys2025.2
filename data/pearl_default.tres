@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CharacterAttributes" load_steps=2 format=3 uid="uid://df0u02blodday"]
+
+[ext_resource type="Script" uid="uid://b3upar75roe87" path="res://scripts/data/character_attributes.gd" id="1_4js2x"]
+
+[resource]
+script = ExtResource("1_4js2x")
+character = 2
+stardom = 0
+rapport = 0
+max_energy = 50
+special_cost = 50
+heal_amount = 10
+heal_cost = 15
+max_hp = 40
+attack_power = 5
+attack_cooldown = 1.0
+defense_multiplier = 1.0
+movement_speed = 300.0
+energy_dropped = 5
+metadata/_custom_type_script = "uid://b3upar75roe87"

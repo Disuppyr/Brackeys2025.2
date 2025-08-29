@@ -6,6 +6,14 @@ var fortune_cookies : int = 0;
 var stage_fortune : StageFortune = null;
 var character_fortunes : Array[CharacterFortune] = [];
 var KO_count : Array[int] = [0, 0, 0, 0];
+var special_KO_count : Array[int] = [0, 0, 0, 0];
+var last_KO : CharacterAttributes.Character = -1;
+
+func _enter_tree() -> void:
+	character_attributes[0] = load("res://data/bonnie_default.tres").duplicate();
+	character_attributes[1] = load("res://data/bonnie_default.tres").duplicate();
+	character_attributes[2] = load("res://data/bonnie_default.tres").duplicate();
+	character_attributes[3] = load("res://data/bonnie_default.tres").duplicate();
 
 func has_fortune(character : CharacterAttributes.Character, type : CharacterFortune.CharacterFortuneType) -> bool:
 	for fortune in character_fortunes:
