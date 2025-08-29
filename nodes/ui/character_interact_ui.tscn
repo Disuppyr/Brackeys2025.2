@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://drc8mg44qb84g"]
+
+[ext_resource type="Script" uid="uid://groa1jytoxel" path="res://scripts/character_interact_ui.gd" id="1_r5gmu"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+z_index = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -128.0
+offset_right = 120.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+script = ExtResource("1_r5gmu")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Button3")
+focus_neighbor_bottom = NodePath("../Button2")
+theme_override_font_sizes/font_size = 18
+text = "Use Fortune Cookie"
+
+[node name="Button2" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Button")
+focus_neighbor_bottom = NodePath("../Button3")
+theme_override_font_sizes/font_size = 18
+text = "Chat"
+
+[node name="Button3" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Button2")
+focus_neighbor_bottom = NodePath("../Button")
+theme_override_font_sizes/font_size = 18
+text = "Leave"
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Dialogue"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel" type="Panel" parent="Label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Button" to="." method="use_fortune_cookie"]
+[connection signal="pressed" from="Button2" to="." method="chat"]
+[connection signal="pressed" from="Button3" to="." method="end_interact"]
