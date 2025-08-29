@@ -374,9 +374,6 @@ _data = {
 &"Transformation": SubResource("Animation_mvavu")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1at1"]
-size = Vector2(500, 50)
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mvavu"]
 animation = &"Idle"
 
@@ -410,6 +407,9 @@ states/Shoot/node = SubResource("AnimationNodeAnimation_incy8")
 states/Shoot/position = Vector2(709, 100)
 states/Start/position = Vector2(208, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c1tu6"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_incy8"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_mtyed"), "Idle", "Shoot", SubResource("AnimationNodeStateMachineTransition_mvavu")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1at1"]
+size = Vector2(500, 50)
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 collision_mask = 2
@@ -446,14 +446,6 @@ libraries = {
 }
 speed_scale = 3.0
 
-[node name="TargetingArea" type="Area2D" parent="."]
-collision_mask = 16
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetingArea"]
-position = Vector2(250, 0)
-shape = SubResource("RectangleShape2D_p1at1")
-
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_eyg7e")
 advance_expression_base_node = NodePath("..")
@@ -461,6 +453,14 @@ anim_player = NodePath("../Node2D/AnimatedSprite2D/AnimationPlayer")
 parameters/conditions/idle = false
 parameters/conditions/run = false
 parameters/conditions/shoot = false
+
+[node name="TargetingArea" type="Area2D" parent="."]
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetingArea"]
+position = Vector2(250, 0)
+shape = SubResource("RectangleShape2D_p1at1")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2D_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_exited"]
