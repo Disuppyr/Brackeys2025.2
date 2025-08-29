@@ -6,10 +6,10 @@ signal on_stage_complete;
 
 @export var enemy_waves : Array[EnemyWave];
 @export var bgm : AudioStreamPlayer;
-@export var spawn_pos_left : Vector2;
-@export var spawn_pos_right : Vector2;
+@export var spawn_pos_left : Vector2 = Vector2.ZERO;
+@export var spawn_pos_right : Vector2 = Vector2.ZERO;
 @export var explosion : PackedScene;
-@export var item_drops : Array[PackedScene];
+@export var item_drops : Array[PackedScene] = [];
 @export var item_rate : float = 0.05;
 
 var current_wave : int = 0;
@@ -50,9 +50,9 @@ func spawn_next_wave():
 			#if do_power_boost:
 				#spawned_enemy.attributes.attack_power *= 1.6;
 			if enemy_waves[current_wave].spawn_location == EnemyWave.SpawnLocation.LEFT or (enemy_waves[current_wave].spawn_location == EnemyWave.SpawnLocation.BOTH and randi_range(0, 1) == 0):
-				spawned_enemy.position = Vector2(spawn_pos_left.x, spawn_pos_left.y + randi_range(-200, 200));
+				spawned_enemy.position = Vector2(spawn_pos_left.x, spawn_pos_left.y + randi_range(-125, 125));
 			else:
-				spawned_enemy.position = Vector2(spawn_pos_right.x, spawn_pos_right.y + randi_range(-200, 200));
+				spawned_enemy.position = Vector2(spawn_pos_right.x, spawn_pos_right.y + randi_range(-125, 125));
 			add_child(spawned_enemy);
 			if enemy_waves[current_wave].spawn_interval > 0:
 				await get_tree().create_timer(enemy_waves[current_wave].spawn_interval).timeout;

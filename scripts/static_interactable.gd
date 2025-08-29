@@ -5,4 +5,11 @@ var scene;
 
 func interact(player : Node):
 	var menu = interact_menu.instantiate();
-	player.add_child(menu);
+	menu.position.y = -200;
+	add_child(menu);
+
+func enter_range():
+	$Label.show();
+
+func exit_range():
+	$Label.hide();

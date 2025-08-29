@@ -11,9 +11,9 @@ var last_KO : CharacterAttributes.Character = -1;
 
 func _enter_tree() -> void:
 	character_attributes[0] = load("res://data/bonnie_default.tres").duplicate();
-	character_attributes[1] = load("res://data/bonnie_default.tres").duplicate();
-	character_attributes[2] = load("res://data/bonnie_default.tres").duplicate();
-	character_attributes[3] = load("res://data/bonnie_default.tres").duplicate();
+	character_attributes[1] = load("res://data/jane_default.tres").duplicate();
+	character_attributes[2] = load("res://data/pearl_default.tres").duplicate();
+	character_attributes[3] = load("res://data/rose_default.tres").duplicate();
 
 func has_fortune(character : CharacterAttributes.Character, type : CharacterFortune.CharacterFortuneType) -> bool:
 	for fortune in character_fortunes:

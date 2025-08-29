@@ -31,3 +31,21 @@ texture_filter = 1
 position = Vector2(0, -32)
 scale = Vector2(4, 4)
 texture = ExtResource("1_6cyjf")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.5
+offset_top = -100.0
+offset_right = 79.5
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Talk to [placeholder]"
+horizontal_alignment = 1
+vertical_alignment = 1
