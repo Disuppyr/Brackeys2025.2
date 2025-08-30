@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbhgmb3nebt0y"]
+
+[ext_resource type="Script" uid="uid://bchjkkt6ug3ch" path="res://scripts/projectile_attack.gd" id="1_vbh8k"]
+[ext_resource type="PackedScene" uid="uid://ce4ln3e3kuqvg" path="res://nodes/objects/attacks/banker_attack.tscn" id="2_vbh8k"]
+
+[sub_resource type="Curve2D" id="Curve2D_hefdf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 800, 0)
+}
+point_count = 2
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_hefdf")
+script = ExtResource("1_vbh8k")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+loop = false
+
+[node name="GenericAttack" parent="PathFollow2D" instance=ExtResource("2_vbh8k")]
+
+[connection signal="child_order_changed" from="PathFollow2D" to="." method="_on_child_removed"]

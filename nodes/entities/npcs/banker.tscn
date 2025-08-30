@@ -1,12 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://bk4kegfn6kjkk"]
+[gd_scene load_steps=27 format=3 uid="uid://kurdxpdsu5i0"]
 
-[ext_resource type="Script" uid="uid://vx3gemp3mb81" path="res://scripts/enemy.gd" id="1_g3plg"]
-[ext_resource type="Texture2D" uid="uid://begjv8wxy82tc" path="res://sprites/AnimationReference/idleref.png" id="2_l6fnd"]
-[ext_resource type="Texture2D" uid="uid://c5tk3usk82wfa" path="res://sprites/characters/npcs/gunslinger/idle.png" id="2_yehxx"]
-[ext_resource type="Texture2D" uid="uid://cp0snjxs1qr5k" path="res://sprites/characters/npcs/gunslinger/run.png" id="3_yk7tf"]
-[ext_resource type="Texture2D" uid="uid://q53deccpnhhw" path="res://sprites/characters/npcs/gunslinger/shoot.png" id="4_h3fii"]
-[ext_resource type="Texture2D" uid="uid://dc6h5wiedmrqw" path="res://sprites/AnimationReference/transformref.png" id="5_1s41x"]
-[ext_resource type="Texture2D" uid="uid://da7b7o8n3q6re" path="res://sprites/AnimationReference/powerupref.png" id="6_mre55"]
+[ext_resource type="Script" uid="uid://vx3gemp3mb81" path="res://scripts/enemy.gd" id="1_uwg2o"]
+[ext_resource type="Texture2D" uid="uid://dsd42h4bl1d0a" path="res://sprites/characters/npcs/banker/idle.png" id="2_cdkea"]
+[ext_resource type="Texture2D" uid="uid://begjv8wxy82tc" path="res://sprites/AnimationReference/idleref.png" id="2_lrcy0"]
+[ext_resource type="Texture2D" uid="uid://unt3eep8bwon" path="res://sprites/characters/npcs/banker/run.png" id="3_d7mom"]
+[ext_resource type="Texture2D" uid="uid://ngfd86xa0dj0" path="res://sprites/characters/npcs/banker/shoot.png" id="4_lrcy0"]
+[ext_resource type="Texture2D" uid="uid://dc6h5wiedmrqw" path="res://sprites/AnimationReference/transformref.png" id="5_flfyg"]
+[ext_resource type="Texture2D" uid="uid://da7b7o8n3q6re" path="res://sprites/AnimationReference/powerupref.png" id="6_0s0g2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_527dk"]
 size = Vector2(64, 16)
@@ -15,7 +15,7 @@ size = Vector2(64, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_yehxx")
+"texture": ExtResource("2_cdkea")
 }],
 "loop": true,
 "name": &"Idle",
@@ -23,7 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_yk7tf")
+"texture": ExtResource("3_d7mom")
 }],
 "loop": true,
 "name": &"Run",
@@ -31,7 +31,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_h3fii")
+"texture": ExtResource("4_lrcy0")
 }],
 "loop": true,
 "name": &"Shoot",
@@ -39,13 +39,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_l6fnd")
+"texture": ExtResource("2_lrcy0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_1s41x")
+"texture": ExtResource("5_flfyg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_mre55")
+"texture": ExtResource("6_0s0g2")
 }],
 "loop": true,
 "name": &"Transformation",
@@ -426,7 +426,7 @@ _data = {
 [node name="Area2D" type="Area2D" groups=["enemy"]]
 collision_layer = 16
 collision_mask = 8
-script = ExtResource("1_g3plg")
+script = ExtResource("1_uwg2o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_527dk")
