@@ -1,10 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://1c80ix7eiods"]
+[gd_scene load_steps=10 format=3 uid="uid://1c80ix7eiods"]
 
 [ext_resource type="PackedScene" uid="uid://ca65mxks3rw6t" path="res://nodes/entities/static_interactable.tscn" id="2_j8ivh"]
+[ext_resource type="Script" uid="uid://groa1jytoxel" path="res://scripts/character_interact_ui.gd" id="2_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://dbfa4xtpn7q2t" path="res://nodes/entities/combat_player.tscn" id="3_7ddre"]
-[ext_resource type="PackedScene" uid="uid://drc8mg44qb84g" path="res://nodes/ui/character_interact_ui.tscn" id="3_nd71p"]
 [ext_resource type="PackedScene" uid="uid://dnfk7afx3o7ys" path="res://nodes/entities/enemy.tscn" id="4_qjeyg"]
+[ext_resource type="PackedScene" uid="uid://p8bx1t5pamk1" path="res://nodes/objects/attacks/generic_projectile_attack.tscn" id="4_wtsjf"]
 [ext_resource type="PackedScene" uid="uid://c352kd4xy153q" path="res://nodes/objects/scenery/DesertBackground.tscn" id="5_qjeyg"]
+[ext_resource type="Script" uid="uid://bvi03ctahkf7s" path="res://scripts/data/entity_attributes.gd" id="5_rnaij"]
+
+[sub_resource type="PackedScene" id="PackedScene_wtsjf"]
+resource_local_to_scene = true
+_bundled = {
+"conn_count": 3,
+"conns": PackedInt32Array(1, 0, 30, 29, 2, 0, 0, 2, 0, 30, 31, 2, 0, 0, 3, 0, 30, 32, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("VBoxContainer", "z_index", "anchors_preset", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "offset_left", "offset_top", "offset_right", "grow_horizontal", "grow_vertical", "alignment", "script", "Button", "custom_minimum_size", "layout_mode", "focus_neighbor_top", "focus_neighbor_bottom", "theme_override_font_sizes/font_size", "text", "Button2", "Button3", "Label", "horizontal_alignment", "vertical_alignment", "autowrap_mode", "Panel", "show_behind_parent", "use_fortune_cookie", "pressed", "chat", "end_interact"),
+"node_count": 6,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 0, 0, -1, 13, 1, 0, 2, 1, 3, 2, 4, 3, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 8, 12, 7, 13, 9, 0, 0, 0, 14, 14, -1, 6, 15, 10, 16, 7, 17, 11, 18, 12, 19, 13, 20, 14, 0, 0, 0, 14, 21, -1, 6, 15, 10, 16, 7, 17, 15, 18, 11, 19, 13, 20, 16, 0, 0, 0, 14, 22, -1, 6, 15, 10, 16, 7, 17, 12, 18, 15, 19, 13, 20, 17, 0, 0, 0, 23, 23, -1, 7, 15, 18, 16, 7, 19, 13, 20, 19, 24, 0, 25, 0, 26, 7, 0, 4, 0, 27, 27, -1, 7, 28, 20, 16, 0, 2, 21, 5, 3, 6, 3, 10, 7, 11, 7, 0),
+"variants": [1, 7, 0.5, 1.0, -120.0, -128.0, 120.0, 2, 0, ExtResource("2_qjeyg"), Vector2(0, 40), NodePath("../Button3"), NodePath("../Button2"), 18, "Use Fortune Cookie", NodePath("../Button"), "Chat", "Leave", Vector2(240, 0), "Dialogue", true, 15],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_s36qc"]
+resource_local_to_scene = true
+script = ExtResource("5_rnaij")
+max_hp = 10
+attack = ExtResource("4_wtsjf")
+attack_power = 5
+attack_cooldown = 1.0
+defense_multiplier = 1.0
+movement_speed = 200.0
+energy_dropped = 5
+metadata/_custom_type_script = "uid://bvi03ctahkf7s"
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -13,12 +41,13 @@ y_sort_enabled = true
 
 [node name="StaticBody2D" parent="." instance=ExtResource("2_j8ivh")]
 position = Vector2(-242, 59)
-interact_menu = ExtResource("3_nd71p")
+interact_menu = SubResource("PackedScene_wtsjf")
 
 [node name="Area2D2" parent="." instance=ExtResource("4_qjeyg")]
 texture_filter = 1
 position = Vector2(148, 182)
+attributes = SubResource("Resource_s36qc")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_7ddre")]
+[node name="CharacterBody2D" parent="." groups=["bonnie"] instance=ExtResource("3_7ddre")]
 
 [node name="Parallax2D" parent="." instance=ExtResource("5_qjeyg")]

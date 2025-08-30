@@ -28,6 +28,10 @@ window/size/viewport_height=600
 player=""
 attack=""
 enemy=""
+bonnie=""
+jane=""
+pearl=""
+rose=""
 
 [input]
 
