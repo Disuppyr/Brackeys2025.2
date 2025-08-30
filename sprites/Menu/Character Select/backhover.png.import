@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuc6q5moqrio4"
-path="res://.godot/imported/MenuPlayHoveredPlaceholder.png-debbc16fcbe723774046a449889a5a4d.ctex"
+uid="uid://b87dii7iik10c"
+path="res://.godot/imported/backhover.png-4e0920742d1310512661788f9db5830b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/MenuPlayHoveredPlaceholder.png"
-dest_files=["res://.godot/imported/MenuPlayHoveredPlaceholder.png-debbc16fcbe723774046a449889a5a4d.ctex"]
+source_file="res://sprites/Menu/Character Select/backhover.png"
+dest_files=["res://.godot/imported/backhover.png-4e0920742d1310512661788f9db5830b.ctex"]
 
 [params]
 

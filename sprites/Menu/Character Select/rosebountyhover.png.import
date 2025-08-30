@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1v3psbbesdgt"
-path="res://.godot/imported/MenuPlaceholder.png-0f15c0255efbc390f091ee016dc2a6b5.ctex"
+uid="uid://b6nvu2ad080qj"
+path="res://.godot/imported/rosebountyhover.png-586ccd51ee6d8ccc1b60a3c6aaf1d4a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/MenuPlaceholder.png"
-dest_files=["res://.godot/imported/MenuPlaceholder.png-0f15c0255efbc390f091ee016dc2a6b5.ctex"]
+source_file="res://sprites/Menu/Character Select/rosebountyhover.png"
+dest_files=["res://.godot/imported/rosebountyhover.png-586ccd51ee6d8ccc1b60a3c6aaf1d4a0.ctex"]
 
 [params]
 

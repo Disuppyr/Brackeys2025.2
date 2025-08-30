@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://dq5d8swg1fsm6"]
+
+[ext_resource type="Script" uid="uid://ck5atcsigak5p" path="res://scripts/static_interactable.gd" id="1_erqme"]
+[ext_resource type="PackedScene" uid="uid://drc8mg44qb84g" path="res://nodes/ui/character_interact_ui.tscn" id="2_slj8g"]
+[ext_resource type="Texture2D" uid="uid://dagdpobwa7o3s" path="res://sprites/characters/party/pearl/idle.png" id="3_slj8g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1on53"]
+radius = 48.0
+height = 168.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2ht1"]
+size = Vector2(63, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gr7ma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_slj8g")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_eic26"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Character:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.067, 0.07), Vector2(0.0670051, 0.0667774)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_16csn"]
+_data = {
+&"idle": SubResource("Animation_eic26")
+}
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_erqme")
+interact_menu = ExtResource("2_slj8g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_1on53")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_c2ht1")
+
+[node name="Character" type="AnimatedSprite2D" parent="StaticBody2D"]
+texture_filter = 1
+scale = Vector2(0.067, 0.07)
+sprite_frames = SubResource("SpriteFrames_gr7ma")
+animation = &"idle"
+offset = Vector2(0, -599.005)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.5
+offset_top = -100.0
+offset_right = 79.5
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Talk to [placeholder]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_16csn")
+}

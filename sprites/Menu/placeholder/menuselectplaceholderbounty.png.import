@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn18pn6esdwln"
-path="res://.godot/imported/menuselectplaceholdercomfirmhover.png-ee6e8202dd53ffddf169c3d717da14fc.ctex"
+uid="uid://bn2gdjck0dpt3"
+path="res://.godot/imported/menuselectplaceholderbounty.png-93293af8336a05a2fc95766173a2486b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/menuselectplaceholdercomfirmhover.png"
-dest_files=["res://.godot/imported/menuselectplaceholdercomfirmhover.png-ee6e8202dd53ffddf169c3d717da14fc.ctex"]
+source_file="res://sprites/Menu/placeholder/menuselectplaceholderbounty.png"
+dest_files=["res://.godot/imported/menuselectplaceholderbounty.png-93293af8336a05a2fc95766173a2486b.ctex"]
 
 [params]
 

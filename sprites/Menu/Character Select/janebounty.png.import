@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6t4qq0vbaxh0"
-path="res://.godot/imported/menuselectplaceholdercomfirm.png-ef5914a1e9a95d3edc54bab10f72c207.ctex"
+uid="uid://b78q2id6o1rau"
+path="res://.godot/imported/janebounty.png-18b6edeb8b1889853ef00f9a13eb4617.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/menuselectplaceholdercomfirm.png"
-dest_files=["res://.godot/imported/menuselectplaceholdercomfirm.png-ef5914a1e9a95d3edc54bab10f72c207.ctex"]
+source_file="res://sprites/Menu/Character Select/janebounty.png"
+dest_files=["res://.godot/imported/janebounty.png-18b6edeb8b1889853ef00f9a13eb4617.ctex"]
 
 [params]
 

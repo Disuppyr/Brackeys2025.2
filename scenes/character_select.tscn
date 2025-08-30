@@ -1,18 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://clofi8h3ftwl5"]
+[gd_scene load_steps=15 format=3 uid="uid://clofi8h3ftwl5"]
 
-[ext_resource type="Texture2D" uid="uid://da8wgluuvs0er" path="res://sprites/menuselectplaceholder.png" id="1_fa52j"]
-[ext_resource type="Texture2D" uid="uid://bn2gdjck0dpt3" path="res://sprites/menuselectplaceholderbounty.png" id="2_5wdeo"]
-[ext_resource type="Texture2D" uid="uid://db3xwtri48nf2" path="res://sprites/menuselectplaceholderbountyhover.png" id="3_w1hxv"]
+[ext_resource type="Texture2D" uid="uid://lvrg5c7xfilt" path="res://sprites/Menu/Character Select/board.png" id="2_qokh3"]
+[ext_resource type="Texture2D" uid="uid://c86q4ocxommg5" path="res://sprites/Menu/Character Select/bonniebounty.png" id="3_pj2qx"]
 [ext_resource type="Script" uid="uid://51nj47mj3kj6" path="res://scripts/character_select.gd" id="4_5wdeo"]
-[ext_resource type="Texture2D" uid="uid://b6t4qq0vbaxh0" path="res://sprites/menuselectplaceholdercomfirm.png" id="4_bqp8h"]
-[ext_resource type="Texture2D" uid="uid://bn18pn6esdwln" path="res://sprites/menuselectplaceholdercomfirmhover.png" id="5_5cdo8"]
+[ext_resource type="Texture2D" uid="uid://bh71nwv2pnnfu" path="res://sprites/Menu/Character Select/bonniebountyhover.png" id="4_ckm5t"]
+[ext_resource type="Texture2D" uid="uid://b37j06iejftl3" path="res://sprites/Menu/Character Select/pearlbounty.png" id="6_qgi8m"]
+[ext_resource type="Texture2D" uid="uid://qrj5xws03lh6" path="res://sprites/Menu/Character Select/pearlbountyhover.png" id="7_3338a"]
+[ext_resource type="Texture2D" uid="uid://dlfpauoy48oir" path="res://sprites/Menu/Character Select/rosebounty.png" id="8_27udu"]
+[ext_resource type="Texture2D" uid="uid://b6nvu2ad080qj" path="res://sprites/Menu/Character Select/rosebountyhover.png" id="9_yya7f"]
+[ext_resource type="Texture2D" uid="uid://b78q2id6o1rau" path="res://sprites/Menu/Character Select/janebounty.png" id="10_ycuge"]
+[ext_resource type="Texture2D" uid="uid://7pg378j5gdtv" path="res://sprites/Menu/Character Select/janebountyhover.png" id="11_vuc7p"]
+[ext_resource type="Texture2D" uid="uid://kun31ld73rls" path="res://sprites/Menu/Character Select/confirm.png" id="12_wciht"]
+[ext_resource type="Texture2D" uid="uid://cha0f3en3gbjo" path="res://sprites/Menu/Character Select/confirmhover.png" id="13_ulcap"]
+[ext_resource type="Texture2D" uid="uid://cpgwt8c07jgtx" path="res://sprites/Menu/Character Select/back.png" id="14_mh1ft"]
+[ext_resource type="Texture2D" uid="uid://b87dii7iik10c" path="res://sprites/Menu/Character Select/backhover.png" id="15_pfhxi"]
 
 [node name="CharacterSelect" type="Node2D"]
 script = ExtResource("4_5wdeo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(500, 299)
-texture = ExtResource("1_fa52j")
+texture = ExtResource("2_qokh3")
 
 [node name="BoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = 8
@@ -20,10 +28,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 107.0
-offset_top = 145.0
-offset_right = 1135.0
-offset_bottom = 360.0
+offset_left = 115.0
+offset_top = 173.0
+offset_right = 1143.0
+offset_bottom = 405.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.88)
@@ -31,27 +39,27 @@ metadata/_edit_use_anchors_ = true
 
 [node name="1" type="TextureButton" parent="BoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_5wdeo")
-texture_hover = ExtResource("3_w1hxv")
-texture_focused = ExtResource("3_w1hxv")
+texture_normal = ExtResource("3_pj2qx")
+texture_hover = ExtResource("4_ckm5t")
+texture_focused = ExtResource("4_ckm5t")
 
 [node name="2" type="TextureButton" parent="BoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_5wdeo")
-texture_hover = ExtResource("3_w1hxv")
-texture_focused = ExtResource("3_w1hxv")
+texture_normal = ExtResource("6_qgi8m")
+texture_hover = ExtResource("7_3338a")
+texture_focused = ExtResource("7_3338a")
 
 [node name="3" type="TextureButton" parent="BoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_5wdeo")
-texture_hover = ExtResource("3_w1hxv")
-texture_focused = ExtResource("3_w1hxv")
+texture_normal = ExtResource("8_27udu")
+texture_hover = ExtResource("9_yya7f")
+texture_focused = ExtResource("9_yya7f")
 
 [node name="4" type="TextureButton" parent="BoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_5wdeo")
-texture_hover = ExtResource("3_w1hxv")
-texture_focused = ExtResource("3_w1hxv")
+texture_normal = ExtResource("10_ycuge")
+texture_hover = ExtResource("11_vuc7p")
+texture_focused = ExtResource("11_vuc7p")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -61,18 +69,18 @@ offset_bottom = 40.0
 
 [node name="ConfirmButton" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_left = 536.0
-offset_top = 396.0
-offset_right = 938.0
-offset_bottom = 523.0
-texture_normal = ExtResource("4_bqp8h")
-texture_hover = ExtResource("5_5cdo8")
+offset_left = 585.0
+offset_top = 422.0
+offset_right = 987.0
+offset_bottom = 549.0
+texture_normal = ExtResource("12_wciht")
+texture_hover = ExtResource("13_ulcap")
 
 [node name="BackButton" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_left = 76.0
-offset_top = 396.0
-offset_right = 478.0
-offset_bottom = 523.0
-texture_normal = ExtResource("4_bqp8h")
-texture_hover = ExtResource("5_5cdo8")
+offset_left = 165.0
+offset_top = 417.0
+offset_right = 567.0
+offset_bottom = 544.0
+texture_normal = ExtResource("14_mh1ft")
+texture_hover = ExtResource("15_pfhxi")

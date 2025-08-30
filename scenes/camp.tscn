@@ -26,7 +26,7 @@ texture = ExtResource("1_tafug")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Area2D" parent="." instance=ExtResource("2_c5nam")]
-position = Vector2(-247, 162)
+position = Vector2(-365, 14)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_nsjlq")]
 position = Vector2(143, 105)
@@ -69,3 +69,12 @@ collision_layer = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(222, 20)
 polygon = PackedVector2Array(-245, -76, -292, -66, -359, -64, -365, -80, -325, -99, -261, -127, -437, -127, -448, -92, -460, -78, -512, -82, -556, -109, -544, -134, -563, -157, -721, -149, -722, 262, 277, 259, 277, -20, 341, -20, 343, 283, -760, 284, -759, -148, -760, -323, 316, -322, 314, -21, 276, 29, 241, 29, 116, 58, 0, 0, -27, -74, -144, -53, -171, -53)
+
+[node name="NPCSpawn1" type="Node2D" parent="."]
+position = Vector2(-266, 154)
+
+[node name="NPCSpawn2" type="Node2D" parent="."]
+position = Vector2(136, -2)
+
+[node name="NPCSpawn3" type="Node2D" parent="."]
+position = Vector2(249, 159)

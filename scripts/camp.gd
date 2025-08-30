@@ -5,6 +5,7 @@ extends Node2D
 func _ready() -> void:
 	# Replace the default player with the selected character
 	_spawn_selected_character()
+	_spawn_unselected_npcs()
 
 func _spawn_selected_character() -> void:
 	if not default_player:
@@ -37,3 +38,25 @@ func _spawn_selected_character() -> void:
 	player_parent.add_child(new_player)
 	
 	print("Spawned character: ", character_scene_path)
+
+func _spawn_unselected_npcs() -> void:
+	var character_to_npc = {
+		"res://nodes/entities/player_characters/bonnie.tscn": "res://nodes/entities/npcs/bonnie_npc.tscn",
+		"res://nodes/entities/player_characters/pearl.tscn": "res://nodes/entities/npcs/pearl_npc.tscn",
+		"res://nodes/entities/player_characters/rose.tscn": "res://nodes/entities/npcs/rose_npc.tscn",
+		"res://nodes/entities/player_characters/jane.tscn": "res://nodes/entities/npcs/jane_npc.tscn"
+	}
+	var selected = GlobalVars.selected_character_scene
+	var unselected = []
+	for char_path in character_to_npc.keys():
+		if char_path != selected:
+			unselected.append(char_path)
+	# Find all spawn points (assumes nodes named NPCSpawn1, NPCSpawn2, ...)
+	for i in range(unselected.size()):
+		var spawn_node = get_node_or_null("NPCSpawn%d" % (i+1))
+		if spawn_node:
+			var npc_scene = load(character_to_npc[unselected[i]])
+			if npc_scene:
+				var npc_instance = npc_scene.instantiate()
+				npc_instance.position = spawn_node.position
+				add_child(npc_instance)
