@@ -11,6 +11,7 @@ var last_KO : CharacterAttributes.Character = -1;
 var current_scene = null;
 var stage_index : int = 0;
 var stage_level : bool = false;
+var selected_character_scene : String = "res://nodes/entities/player_characters/bonnie.tscn"  # Default to Bonnie
 
 func _ready():
 	var root = get_tree().root

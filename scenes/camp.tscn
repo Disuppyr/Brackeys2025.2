@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn26135lnbtln"]
+[gd_scene load_steps=9 format=3 uid="uid://dn26135lnbtln"]
 
+[ext_resource type="Script" uid="uid://bu0aycbv6a20o" path="res://scripts/camp.gd" id="1_7aqh4"]
 [ext_resource type="Texture2D" uid="uid://br6y7yhu8mhbi" path="res://sprites/Background/Camp/campsite.png" id="1_tafug"]
 [ext_resource type="PackedScene" uid="uid://cdh8tn5ou5hh1" path="res://nodes/entities/npcs/gravy_crockett.tscn" id="2_c5nam"]
 [ext_resource type="PackedScene" uid="uid://dbfa4xtpn7q2t" path="res://nodes/entities/combat_player.tscn" id="3_nsjlq"]
@@ -14,6 +15,7 @@ size = Vector2(361.786, 40.3571)
 
 [node name="Camp" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_7aqh4")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1

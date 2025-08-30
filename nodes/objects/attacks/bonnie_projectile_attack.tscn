@@ -18,5 +18,6 @@ rotates = false
 loop = false
 
 [node name="GenericAttack" parent="." instance=ExtResource("2_sx06y")]
+knockback = -20.0
 
 [connection signal="child_order_changed" from="PathFollow2D" to="." method="_on_child_removed"]

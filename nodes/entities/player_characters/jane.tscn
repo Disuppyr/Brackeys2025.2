@@ -423,6 +423,7 @@ advance_condition = &"shoot"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iwhhr"]
 advance_mode = 2
+advance_condition = &"transformation"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ouple"]
 advance_mode = 2
@@ -487,6 +488,7 @@ anim_player = NodePath("../Node2D/AnimatedSprite2D/AnimationPlayer")
 parameters/conditions/idle = false
 parameters/conditions/run = false
 parameters/conditions/shoot = false
+parameters/conditions/transformation = false
 
 [node name="TargetingArea" type="Area2D" parent="."]
 collision_mask = 16
