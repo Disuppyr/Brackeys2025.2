@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d4mx5jv0wpwy0"]
+[gd_scene load_steps=33 format=3 uid="uid://d4mx5jv0wpwy0"]
 
 [ext_resource type="Script" uid="uid://dmxqjg57lhdyl" path="res://scripts/combat_player_controller.gd" id="1_etxcx"]
 [ext_resource type="PackedScene" uid="uid://p8bx1t5pamk1" path="res://nodes/objects/attacks/generic_projectile_attack.tscn" id="2_f47g4"]
@@ -363,6 +363,22 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 0, 1, 1), Color(0.59688, 0.549927, 1, 1), Color(0.233051, 0.643214, 1, 1), Color(1.34766e-06, 0.71245, 0.709909, 1), Color(1.58831e-06, 0.73845, 0.471164, 1), Color(0.508783, 0.69637, 1.92523e-07, 1), Color(0.75043, 0.606331, 0, 1), Color(0.945473, 0.473692, 0, 1), Color(1, 0.369545, 0.517769, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_etxcx"]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.133333, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_deg0a"]
 _data = {
 &"Death": SubResource("Animation_mtyed"),
@@ -371,7 +387,8 @@ _data = {
 &"RESET": SubResource("Animation_mk0wr"),
 &"Run": SubResource("Animation_c1tu6"),
 &"Shoot": SubResource("Animation_deg0a"),
-&"Transformation": SubResource("Animation_mvavu")
+&"Transformation": SubResource("Animation_mvavu"),
+&"hurt": SubResource("Animation_etxcx")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_etxcx"]

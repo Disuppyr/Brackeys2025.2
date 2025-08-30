@@ -15,14 +15,14 @@ var damage_source : Vector2 = Vector2.ZERO;
 func _physics_process(delta: float) -> void:
 	if state == EnemyState.HURTING:
 		if invulnerability == 0.0:
-			y_offset = -32.0;
+			y_offset = 0.0;
 			state = EnemyState.IDLE;
 		else:
 			invulnerability = max(0.0, invulnerability - delta);
 			y_offset = -32 - (50 * sin(PI * (0.8 - invulnerability) / 0.8));
 		var knockback_dir = (position - damage_source).normalized();
 		position += knockback_dir * knockback * delta;
-		$Sprite2D.position.y = y_offset;
+		$Node2D/AnimatedSprite2D.position.y = y_offset;
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("attack"):
