@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxqb16awbwkfg"]
+
+[ext_resource type="Texture2D" uid="uid://ctre6138quhel" path="res://sprites/Biscuits/HardTack.png" id="1_yxkcl"]
+
+[node name="HardTack" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.067, 0.067)
+texture = ExtResource("1_yxkcl")

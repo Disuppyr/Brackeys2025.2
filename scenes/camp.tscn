@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bu0aycbv6a20o" path="res://scripts/camp.gd" id="1_7aqh4"]
 [ext_resource type="Texture2D" uid="uid://br6y7yhu8mhbi" path="res://sprites/Background/Camp/campsite.png" id="1_tafug"]
-[ext_resource type="PackedScene" uid="uid://cdh8tn5ou5hh1" path="res://nodes/entities/npcs/gravy_crockett.tscn" id="2_c5nam"]
+[ext_resource type="PackedScene" uid="uid://cdh8tn5ou5hh1" path="res://nodes/entities/npcs/camp/gravy_crockett.tscn" id="2_c5nam"]
 [ext_resource type="PackedScene" uid="uid://dbfa4xtpn7q2t" path="res://nodes/entities/combat_player.tscn" id="3_nsjlq"]
 [ext_resource type="Texture2D" uid="uid://7sv0dl0vxt58" path="res://sprites/Background/Camp/campsite-campfire.png" id="4_7aqh4"]
 [ext_resource type="Texture2D" uid="uid://dg2o0lvjei306" path="res://sprites/Background/Camp/campsite-grass.png" id="5_crmxo"]

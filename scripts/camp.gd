@@ -41,10 +41,10 @@ func _spawn_selected_character() -> void:
 
 func _spawn_unselected_npcs() -> void:
 	var character_to_npc = {
-		"res://nodes/entities/player_characters/bonnie.tscn": "res://nodes/entities/npcs/bonnie_npc.tscn",
-		"res://nodes/entities/player_characters/pearl.tscn": "res://nodes/entities/npcs/pearl_npc.tscn",
-		"res://nodes/entities/player_characters/rose.tscn": "res://nodes/entities/npcs/rose_npc.tscn",
-		"res://nodes/entities/player_characters/jane.tscn": "res://nodes/entities/npcs/jane_npc.tscn"
+		"res://nodes/entities/player_characters/bonnie.tscn": "res://nodes/entities/npcs/camp/bonnie_npc.tscn",
+		"res://nodes/entities/player_characters/pearl.tscn": "res://nodes/entities/npcs/camp/pearl_npc.tscn",
+		"res://nodes/entities/player_characters/rose.tscn": "res://nodes/entities/npcs/camp/rose_npc.tscn",
+		"res://nodes/entities/player_characters/jane.tscn": "res://nodes/entities/npcs/camp/jane_npc.tscn"
 	}
 	var selected = GlobalVars.selected_character_scene
 	var unselected = []

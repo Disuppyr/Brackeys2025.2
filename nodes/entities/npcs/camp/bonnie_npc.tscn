@@ -1,21 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://dq5d8swg1fsm6"]
+[gd_scene load_steps=9 format=3 uid="uid://d3lbb2l2dt747"]
 
-[ext_resource type="Script" uid="uid://ck5atcsigak5p" path="res://scripts/static_interactable.gd" id="1_erqme"]
-[ext_resource type="PackedScene" uid="uid://drc8mg44qb84g" path="res://nodes/ui/character_interact_ui.tscn" id="2_slj8g"]
-[ext_resource type="Texture2D" uid="uid://dagdpobwa7o3s" path="res://sprites/characters/party/pearl/idle.png" id="3_slj8g"]
+[ext_resource type="Script" uid="uid://ck5atcsigak5p" path="res://scripts/static_interactable.gd" id="1_g70cc"]
+[ext_resource type="PackedScene" uid="uid://drc8mg44qb84g" path="res://nodes/ui/character_interact_ui.tscn" id="2_jlmoc"]
+[ext_resource type="Texture2D" uid="uid://ddqohn6m3e7jm" path="res://sprites/characters/party/bonnie/idle.png" id="3_o0v02"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1on53"]
 radius = 48.0
 height = 168.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2ht1"]
-size = Vector2(63, 16)
+size = Vector2(61, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gr7ma"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_slj8g")
+"texture": ExtResource("3_o0v02")
 }],
 "loop": true,
 "name": &"idle",
@@ -46,8 +46,8 @@ _data = {
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 4
-script = ExtResource("1_erqme")
-interact_menu = ExtResource("2_slj8g")
+script = ExtResource("1_g70cc")
+interact_menu = ExtResource("2_jlmoc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
@@ -58,12 +58,12 @@ shape = SubResource("CapsuleShape2D_1on53")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0.5, 0)
+position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_c2ht1")
 
 [node name="Character" type="AnimatedSprite2D" parent="StaticBody2D"]
 texture_filter = 1
-scale = Vector2(0.067, 0.07)
+scale = Vector2(0.0670045, 0.0671534)
 sprite_frames = SubResource("SpriteFrames_gr7ma")
 animation = &"idle"
 offset = Vector2(0, -599.005)

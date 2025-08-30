@@ -15,7 +15,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_cancel"):
 		if showing_dialogue:
 			if do_scene_transition:
-				pass
+				get_tree().change_scene_to_file("res://scenes/level1.tscn")
 			else:
 				showing_dialogue = false;
 				end_interact();
@@ -32,10 +32,14 @@ func chat():
 func start_mission():
 	do_scene_transition = true;
 	show_dialogue("Good luck!");
+	
 
 func end_interact():
-	get_tree().call_group("player", "end_interact");
-	queue_free();
+	if do_scene_transition:
+		get_tree().change_scene_to_file("res://scenes/level1.tscn")
+	else:
+		get_tree().call_group("player", "end_interact")
+		queue_free()
 
 func show_dialogue(dialogue : String):
 	$Button.hide();

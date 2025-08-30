@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://pd7lwfyf7itw"]
 
-[ext_resource type="Script" uid="uid://ck5atcsigak5p" path="res://scripts/static_interactable.gd" id="1_gfnwv"]
-[ext_resource type="PackedScene" uid="uid://drc8mg44qb84g" path="res://nodes/ui/character_interact_ui.tscn" id="2_bjjuj"]
-[ext_resource type="Texture2D" uid="uid://d1t305i4cycib" path="res://sprites/characters/party/rose/idle.png" id="3_bjjuj"]
+[ext_resource type="Script" uid="uid://ck5atcsigak5p" path="res://scripts/static_interactable.gd" id="1_s0hpp"]
+[ext_resource type="PackedScene" uid="uid://drc8mg44qb84g" path="res://nodes/ui/character_interact_ui.tscn" id="2_2rjms"]
+[ext_resource type="Texture2D" uid="uid://d1t305i4cycib" path="res://sprites/characters/party/rose/idle.png" id="3_7vst7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1on53"]
 radius = 48.0
@@ -15,7 +15,7 @@ size = Vector2(62, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_bjjuj")
+"texture": ExtResource("3_7vst7")
 }],
 "loop": true,
 "name": &"idle",
@@ -46,8 +46,8 @@ _data = {
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 4
-script = ExtResource("1_gfnwv")
-interact_menu = ExtResource("2_bjjuj")
+script = ExtResource("1_s0hpp")
+interact_menu = ExtResource("2_2rjms")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true

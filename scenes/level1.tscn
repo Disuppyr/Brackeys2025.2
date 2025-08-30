@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://4xfafdx5x3pw"]
+
+[ext_resource type="Script" uid="uid://qe4q4qe2ddsg" path="res://scripts/stage_manager.gd" id="1_wwpf4"]
+[ext_resource type="Script" uid="uid://b7018rjg6lhj2" path="res://scripts/data/enemy_wave.gd" id="2_6sh32"]
+[ext_resource type="PackedScene" uid="uid://cjls4mtgpyp0g" path="res://sprites/Explosion/explosion.tscn" id="2_dwgg1"]
+[ext_resource type="PackedScene" uid="uid://dkq5niclic8w" path="res://nodes/ui/stage_ui.tscn" id="2_m7ahb"]
+[ext_resource type="PackedScene" uid="uid://bk4kegfn6kjkk" path="res://nodes/entities/npcs/combat/enemy/gunslinger.tscn" id="3_ejswk"]
+[ext_resource type="PackedScene" uid="uid://cxqb16awbwkfg" path="res://nodes/objects/items/hard_tack.tscn" id="3_ru4tf"]
+[ext_resource type="PackedScene" uid="uid://c352kd4xy153q" path="res://nodes/objects/scenery/DesertBackground.tscn" id="7_ejswk"]
+
+[sub_resource type="Resource" id="Resource_bbk5w"]
+script = ExtResource("2_6sh32")
+spawn_location = 1
+enemy_scene = ExtResource("3_ejswk")
+enemy_count = 6
+spawn_interval = 1.0
+next_wave_delay = 1.0
+metadata/_custom_type_script = "uid://b7018rjg6lhj2"
+
+[node name="StageTemplate" type="Node2D"]
+script = ExtResource("1_wwpf4")
+enemy_waves = Array[ExtResource("2_6sh32")]([SubResource("Resource_bbk5w")])
+spawn_pos_left = Vector2(-450, 150)
+spawn_pos_right = Vector2(450, 150)
+explosion = ExtResource("2_dwgg1")
+item_drops = Array[PackedScene]([ExtResource("3_ru4tf")])
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="StageUI" parent="Camera2D" node_paths=PackedStringArray("stats_uis", "hp_uis", "energy_uis") instance=ExtResource("2_m7ahb")]
+offset_top = -300.0
+offset_bottom = -300.0
+stats_uis = [null]
+hp_uis = [null]
+energy_uis = [null]
+
+[node name="Background" parent="." instance=ExtResource("7_ejswk")]
