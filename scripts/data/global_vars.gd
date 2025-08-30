@@ -2,13 +2,13 @@ extends Node
 
 var player_character : CharacterAttributes.Character = CharacterAttributes.Character.BONNIE;
 var character_attributes : Array[CharacterAttributes] = [null, null, null, null];
-var fortune_cookies : int = 0;
+var fortune_cookies : int = 1;
 var stage_fortune : StageFortune = null;
 var character_fortunes : Array[CharacterFortune] = [];
 var KO_count : Array[int] = [0, 0, 0, 0];
 var special_KO_count : Array[int] = [0, 0, 0, 0];
 var last_KO : CharacterAttributes.Character = -1;
-var current_scene = null
+var current_scene = null;
 var stage_index : int = 0;
 var stage_level : bool = false;
 
@@ -30,7 +30,7 @@ func has_fortune(character : CharacterAttributes.Character, type : CharacterFort
 	return false;
 
 func get_targetable_characters() -> Array[int]:
-	var returned = [];
+	var returned = [] as Array[int];
 	for attributes in character_attributes:
 		if attributes.current_hp > 0:
 			returned.add(attributes.character);
@@ -56,3 +56,14 @@ func _deferred_goto_scene(path):
 	current_scene = s.instantiate();
 	get_tree().root.add_child(current_scene);
 	get_tree().current_scene = current_scene;
+
+func get_character_node(character : CharacterAttributes.Character):
+	match(character):
+		CharacterAttributes.Character.BONNIE:
+			return get_tree().get_first_node_in_group("bonnie");
+		CharacterAttributes.Character.JANE:
+			return get_tree().get_first_node_in_group("jane");
+		CharacterAttributes.Character.PEARL:
+			return get_tree().get_first_node_in_group("pearl");
+		CharacterAttributes.Character.ROSE:
+			return get_tree().get_first_node_in_group("rose");
