@@ -18,11 +18,13 @@ texture = ExtResource("1_0rm2h")
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Parallax2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxLayer2"]
+z_index = 1
 scale = Vector2(0.56, 0.56)
 texture = ExtResource("2_dlli1")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="Parallax2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxLayer3"]
+z_index = 1
 scale = Vector2(0.56, 0.56)
 texture = ExtResource("3_j2utp")

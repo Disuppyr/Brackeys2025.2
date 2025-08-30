@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FortuneCookieCrookery"
-run/main_scene="uid://1c80ix7eiods"
+run/main_scene="uid://bhxg5luu8ppph"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
@@ -20,7 +20,7 @@ GlobalVars="*res://scripts/data/global_vars.gd"
 
 [display]
 
-window/size/viewport_width=800
+window/size/viewport_width=1000
 window/size/viewport_height=600
 
 [global_group]

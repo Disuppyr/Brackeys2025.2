@@ -1,5 +1,69 @@
-[gd_scene format=3 uid="uid://dn26135lnbtln"]
+[gd_scene load_steps=8 format=3 uid="uid://dn26135lnbtln"]
+
+[ext_resource type="Texture2D" uid="uid://br6y7yhu8mhbi" path="res://sprites/Background/Camp/campsite.png" id="1_tafug"]
+[ext_resource type="PackedScene" uid="uid://cdh8tn5ou5hh1" path="res://nodes/entities/npcs/gravy_crockett.tscn" id="2_c5nam"]
+[ext_resource type="PackedScene" uid="uid://dbfa4xtpn7q2t" path="res://nodes/entities/combat_player.tscn" id="3_nsjlq"]
+[ext_resource type="Texture2D" uid="uid://7sv0dl0vxt58" path="res://sprites/Background/Camp/campsite-campfire.png" id="4_7aqh4"]
+[ext_resource type="Texture2D" uid="uid://dg2o0lvjei306" path="res://sprites/Background/Camp/campsite-grass.png" id="5_crmxo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tafug"]
+size = Vector2(250, 46.4286)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7aqh4"]
+size = Vector2(361.786, 40.3571)
 
 [node name="Camp" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, 0.56)
+scale = Vector2(0.560326, 0.560326)
+texture = ExtResource("1_tafug")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Area2D" parent="." instance=ExtResource("2_c5nam")]
+position = Vector2(-247, 162)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_nsjlq")]
+position = Vector2(143, 105)
+
+[node name="Campfire" type="Node2D" parent="."]
+position = Vector2(-119, 68)
+
+[node name="Campfire" type="Sprite2D" parent="Campfire"]
+position = Vector2(117, -65)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("4_7aqh4")
+
+[node name="campfire" type="StaticBody2D" parent="Campfire/Campfire"]
+position = Vector2(-18, 0)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Campfire/Campfire/campfire"]
+position = Vector2(-190.929, 116.071)
+shape = SubResource("RectangleShape2D_tafug")
+
+[node name="Grass" type="Node2D" parent="."]
+position = Vector2(326, 250)
+
+[node name="Grass" type="Sprite2D" parent="Grass"]
+position = Vector2(-370, -251)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("5_crmxo")
+
+[node name="grass" type="StaticBody2D" parent="Grass/Grass"]
+position = Vector2(-18, 0)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass/Grass/grass"]
+position = Vector2(678.179, 447.679)
+shape = SubResource("RectangleShape2D_7aqh4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(222, 20)
+polygon = PackedVector2Array(-245, -76, -292, -66, -359, -64, -365, -80, -325, -99, -261, -127, -437, -127, -448, -92, -460, -78, -512, -82, -556, -109, -544, -134, -563, -157, -721, -149, -722, 262, 277, 259, 277, -20, 341, -20, 343, 283, -760, 284, -759, -148, -760, -323, 316, -322, 314, -21, 276, 29, 241, 29, 116, 58, 0, 0, -27, -74, -144, -53, -171, -53)

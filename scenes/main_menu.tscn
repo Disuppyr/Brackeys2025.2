@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhxg5luu8ppph"]
+
+[ext_resource type="Script" uid="uid://cd4ek0515fcop" path="res://scripts/main_menu.gd" id="1_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://grrqd801ulx6" path="res://sprites/MenuPlayPlaceholder.png" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://1v3psbbesdgt" path="res://sprites/MenuPlaceholder.png" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://cuc6q5moqrio4" path="res://sprites/MenuPlayHoveredPlaceholder.png" id="4_wu84c"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_bqqt6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(482, 298)
+scale = Vector2(0.175, 0.175)
+texture = ExtResource("2_bqqt6")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 398.0
+offset_top = 472.0
+offset_right = 438.0
+offset_bottom = 512.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = -63.0
+offset_top = -39.0
+offset_right = 1841.0
+offset_bottom = 688.0
+scale = Vector2(0.178143, 0.178143)
+texture_normal = ExtResource("1_ekxnf")
+texture_hover = ExtResource("4_wu84c")
+metadata/_edit_use_anchors_ = true

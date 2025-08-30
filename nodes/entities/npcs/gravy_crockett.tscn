@@ -88,14 +88,14 @@ shape = SubResource("RectangleShape2D_c2ht1")
 [node name="Betrand" type="AnimatedSprite2D" parent="StaticBody2D"]
 texture_filter = 1
 position = Vector2(-48, -9)
-scale = Vector2(0.0670028, 0.0682208)
+scale = Vector2(0.0670041, 0.0674219)
 sprite_frames = SubResource("SpriteFrames_eic26")
 animation = &"idle"
 offset = Vector2(0, -599.005)
 
 [node name="GravyCrockett" type="AnimatedSprite2D" parent="StaticBody2D"]
 texture_filter = 1
-scale = Vector2(0.0670033, 0.0679121)
+scale = Vector2(0.067, 0.07)
 sprite_frames = SubResource("SpriteFrames_gr7ma")
 animation = &"idle"
 offset = Vector2(0, -599.005)
