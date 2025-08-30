@@ -22,13 +22,21 @@ offset_right = 438.0
 offset_bottom = 512.0
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureButton" type="TextureButton" parent="Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 0
-offset_left = -63.0
-offset_top = -39.0
-offset_right = 1841.0
-offset_bottom = 688.0
-scale = Vector2(0.178143, 0.178143)
+offset_left = -135.0
+offset_right = 3677.0
+offset_bottom = 727.0
+scale = Vector2(0.12, 0.12)
+
+[node name="Quit" type="TextureButton" parent="Control/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_ekxnf")
+texture_hover = ExtResource("4_wu84c")
+metadata/_edit_use_anchors_ = true
+
+[node name="Play" type="TextureButton" parent="Control/HBoxContainer"]
+layout_mode = 2
 texture_normal = ExtResource("1_ekxnf")
 texture_hover = ExtResource("4_wu84c")
 metadata/_edit_use_anchors_ = true

@@ -60,9 +60,19 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ConfirmButton" type="TextureButton" parent="Control"]
-offset_left = 296.0
+layout_mode = 0
+offset_left = 536.0
 offset_top = 396.0
-offset_right = 698.0
+offset_right = 938.0
+offset_bottom = 523.0
+texture_normal = ExtResource("4_bqp8h")
+texture_hover = ExtResource("5_5cdo8")
+
+[node name="BackButton" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 396.0
+offset_right = 478.0
 offset_bottom = 523.0
 texture_normal = ExtResource("4_bqp8h")
 texture_hover = ExtResource("5_5cdo8")

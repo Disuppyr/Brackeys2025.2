@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var confirm_button : TextureButton = $Control/ConfirmButton
+@onready var back_button : TextureButton = $Control/BackButton
 @onready var box_container : HBoxContainer = $BoxContainer
 
 # Character scene paths
@@ -17,6 +18,10 @@ func _ready() -> void:
 	# Connect the confirm button press signal to our function
 	if confirm_button:
 		confirm_button.pressed.connect(_on_confirm_button_pressed)
+	
+	# Connect the back button press signal to our function
+	if back_button:
+		back_button.pressed.connect(_on_back_button_pressed)
 	
 	# Connect focus signals for character selection buttons
 	_setup_character_buttons()
@@ -44,3 +49,7 @@ func _on_confirm_button_pressed() -> void:
 	print("Confirmed character selection: ", character_scenes[selected_character_index])
 	# Change to the camp scene
 	get_tree().change_scene_to_file("res://scenes/camp.tscn")
+
+func _on_back_button_pressed() -> void:
+	# Go back to the main menu
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
