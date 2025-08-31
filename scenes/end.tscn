@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://bbalmpqektqbm"]
+[gd_scene load_steps=17 format=3 uid="uid://bbalmpqektqbm"]
 
+[ext_resource type="Script" uid="uid://det34ttbvc505" path="res://scripts/end.gd" id="1_bvfni"]
 [ext_resource type="Texture2D" uid="uid://clbffa3545mxv" path="res://sprites/Menu/end/sunset.png" id="1_mwn6m"]
 [ext_resource type="Texture2D" uid="uid://b0b5jwxi5gudi" path="res://sprites/Menu/end/defeat.png" id="2_p7m4f"]
 [ext_resource type="Texture2D" uid="uid://74fupu1iba7b" path="res://sprites/Menu/end/victory.png" id="3_bvfni"]
@@ -211,6 +212,7 @@ states/win/position = Vector2(521, 70)
 transitions = ["Start", "win", SubResource("AnimationNodeStateMachineTransition_s4tl2"), "win", "End", SubResource("AnimationNodeStateMachineTransition_8hmjt"), "Start", "lose", SubResource("AnimationNodeStateMachineTransition_o5lv4"), "lose", "End", SubResource("AnimationNodeStateMachineTransition_ee763")]
 
 [node name="End" type="Node2D"]
+script = ExtResource("1_bvfni")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(501, 301)

@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var play_button : TextureButton = $Control/HBoxContainer/Play
-@onready var quit_button : TextureButton = $Control/HBoxContainer/Quit
+@onready var play_button : TextureButton = $Control/Play
+@onready var quit_button : TextureButton = $Control/Quit
 
 func _ready() -> void:
 	# Connect the button press signals to our functions
