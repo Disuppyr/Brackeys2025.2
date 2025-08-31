@@ -62,3 +62,11 @@ func _spawn_unselected_npcs() -> void:
 				if i > 0:
 					npc_instance.flip();
 				add_child(npc_instance)
+
+func update_cookie_ui():
+	if GlobalVars.fortune_cookies == 2:
+		$Control/HSplitContainer/FortuneCookie3.hide();
+	if GlobalVars.fortune_cookies == 1:
+		$Control/HSplitContainer/FortuneCookie2.hide();
+	if GlobalVars.fortune_cookies == 0:
+		$Control/HSplitContainer/FortuneCookie1.hide();

@@ -14,7 +14,7 @@ size = Vector2(250, 46.4286)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7aqh4"]
 size = Vector2(361.786, 40.3571)
 
-[node name="Camp" type="Node2D"]
+[node name="Camp" type="Node2D" groups=["enemy"]]
 y_sort_enabled = true
 script = ExtResource("1_7aqh4")
 

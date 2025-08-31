@@ -1,5 +1,6 @@
 extends Interactable
 
+@export var character : CharacterAttributes.Character;
 @export var interact_menu : PackedScene;
 var scene;
 
@@ -9,7 +10,9 @@ func _ready() -> void:
 
 func interact(player : Node):
 	var menu = interact_menu.instantiate();
-	menu.position.y = -200;
+	if menu as CharacterInteract:
+		menu.character = character;
+	menu.position.y = -240;
 	add_child(menu);
 
 func enter_range():

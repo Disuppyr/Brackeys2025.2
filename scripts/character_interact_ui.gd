@@ -1,4 +1,5 @@
 extends VBoxContainer
+class_name CharacterInteract
 
 @export var character : CharacterAttributes.Character;
 
@@ -25,11 +26,20 @@ func use_fortune_cookie():
 	else:
 		var fortune = CharacterFortune.generate_fortune_any(character);
 		GlobalVars.character_fortunes.append(fortune);
-		show_dialogue(fortune.get_fortune_text());
+		show_dialogue("The cookie reads: \"" + fortune.get_fortune_text() + "\"");
 	GlobalVars.fortune_cookies = max(0, GlobalVars.fortune_cookies - 1);
+	get_tree().call_group("enemy", "update_cookie_ui");
 
 func chat():
-	show_dialogue("Hello there!");
+	match(character):
+		CharacterAttributes.Character.BONNIE:
+			show_dialogue("I'm lookin' to drive some cattle!");
+		CharacterAttributes.Character.JANE:
+			show_dialogue("That mayor is corrupt...");
+		CharacterAttributes.Character.PEARL:
+			show_dialogue("Are you ready, darling? I can't wait!");
+		CharacterAttributes.Character.ROSE:
+			show_dialogue("...");
 
 func end_interact():
 	get_tree().call_group("player", "end_interact");

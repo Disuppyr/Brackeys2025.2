@@ -23,11 +23,12 @@ func _input(event: InputEvent) -> void:
 func use_fortune_cookie():
 	var fortune = StageFortune.generate_fortune();
 	GlobalVars.stage_fortune = fortune;
-	show_dialogue(fortune.get_fortune_text());
+	show_dialogue("The cookie reads: \"" + fortune.get_fortune_text() + "\"");
 	GlobalVars.fortune_cookies = max(0, GlobalVars.fortune_cookies - 1);
+	get_tree().call_group("enemy", "update_cookie_ui");
 
 func chat():
-	show_dialogue("Hello there!");
+	show_dialogue("There's something odd about these foreign biscuits...");
 
 func start_mission():
 	do_scene_transition = true;
@@ -45,6 +46,7 @@ func show_dialogue(dialogue : String):
 	$Button.hide();
 	$Button2.hide();
 	$Button3.hide();
+	$Button4.hide();
 	$Label.text = dialogue;
 	$Label.show();
 	showing_dialogue = true;
