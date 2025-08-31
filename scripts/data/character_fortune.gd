@@ -21,9 +21,9 @@ static func generate_fortune_any(chara : CharacterAttributes.Character):
 	new_fortune.type = randi_range(0, 7);
 	return new_fortune;
 	
-static func generate_fortune_good(char : CharacterAttributes.Character):
+static func generate_fortune_good(chara : CharacterAttributes.Character):
 	var new_fortune = CharacterFortune.new();
-	new_fortune.character = char;
+	new_fortune.character = chara;
 	new_fortune.type = randi_range(0, 4);
 	return new_fortune;
 	

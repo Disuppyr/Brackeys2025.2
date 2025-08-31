@@ -19,10 +19,10 @@ enum Character {
 
 var current_energy : int = 0:
 	set(value):
-		changed.emit(character);
+		changed.emit();
 		current_energy = value;
 var incapacitated : bool = false;
 
 func _set_current_hp(value):
-	changed.emit(character);
+	changed.emit();
 	super(value);
