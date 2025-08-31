@@ -1,25 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://bi3wooknc8nq7"]
+[gd_scene load_steps=31 format=3 uid="uid://bi3wooknc8nq7"]
 
-[ext_resource type="Script" uid="uid://vx3gemp3mb81" path="res://scripts/enemy.gd" id="1_xvs0q"]
-[ext_resource type="PackedScene" uid="uid://p8bx1t5pamk1" path="res://nodes/objects/attacks/generic_projectile_attack.tscn" id="2_qx1gk"]
-[ext_resource type="Script" uid="uid://bvi03ctahkf7s" path="res://scripts/data/entity_attributes.gd" id="3_h15gw"]
+[ext_resource type="Script" uid="uid://bg7yko1otgjox" path="res://scripts/combat_npc_controller.gd" id="1_cto2l"]
 [ext_resource type="Texture2D" uid="uid://dagdpobwa7o3s" path="res://sprites/characters/party/pearl/idle.png" id="4_xvs0q"]
 [ext_resource type="Texture2D" uid="uid://bo6m77xplwbow" path="res://sprites/characters/party/pearl/run.png" id="5_qx1gk"]
 [ext_resource type="Texture2D" uid="uid://bni72c3oxbos8" path="res://sprites/characters/party/pearl/shoot.png" id="6_h15gw"]
 [ext_resource type="Texture2D" uid="uid://dc6h5wiedmrqw" path="res://sprites/AnimationReference/transformref.png" id="7_yiiuw"]
 [ext_resource type="Texture2D" uid="uid://bps6mm6jp8arp" path="res://sprites/characters/party/pearl/powerup.png" id="8_5ahin"]
-
-[sub_resource type="Resource" id="Resource_2jl83"]
-resource_local_to_scene = true
-script = ExtResource("3_h15gw")
-max_hp = 10
-attack = ExtResource("2_qx1gk")
-attack_power = 5
-attack_cooldown = 1.0
-defense_multiplier = 1.0
-movement_speed = 200.0
-energy_dropped = 5
-metadata/_custom_type_script = "uid://bvi03ctahkf7s"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_527dk"]
 size = Vector2(64, 16)
@@ -462,8 +448,8 @@ _data = {
 [node name="Area2D" type="Area2D" groups=["pearl"]]
 collision_layer = 16
 collision_mask = 8
-script = ExtResource("1_xvs0q")
-attributes = SubResource("Resource_2jl83")
+script = ExtResource("1_cto2l")
+character = 2
 follow_range = 350.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

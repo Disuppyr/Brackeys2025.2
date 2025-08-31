@@ -11,5 +11,5 @@ func _ready() -> void:
 		update_ui(attributes.character);
 
 func update_ui(character : int):
-	hp_uis[character].size.x = 128.0 * (GlobalVars.character_attributes[character].current_hp / float(GlobalVars.character_attributes[character].max_hp));
-	energy_uis[character].size.x = 128.0 * (GlobalVars.character_attributes[character].current_energy / float(GlobalVars.character_attributes[character].max_energy));
+	hp_uis[character].size.x = 128.0 * (float(GlobalVars.character_attributes[character].current_hp) / float(GlobalVars.character_attributes[character].max_hp));
+	energy_uis[character].size.x = 128.0 * (float(GlobalVars.character_attributes[character].current_energy) / float(GlobalVars.character_attributes[character].max_energy));

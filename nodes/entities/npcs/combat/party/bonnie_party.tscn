@@ -1,25 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://cx2ipyxo0klcu"]
+[gd_scene load_steps=31 format=3 uid="uid://cx2ipyxo0klcu"]
 
-[ext_resource type="Script" uid="uid://vx3gemp3mb81" path="res://scripts/enemy.gd" id="1_nxm42"]
-[ext_resource type="PackedScene" uid="uid://p8bx1t5pamk1" path="res://nodes/objects/attacks/generic_projectile_attack.tscn" id="2_oxpqg"]
-[ext_resource type="Script" uid="uid://bvi03ctahkf7s" path="res://scripts/data/entity_attributes.gd" id="3_ki83l"]
+[ext_resource type="Script" uid="uid://bg7yko1otgjox" path="res://scripts/combat_npc_controller.gd" id="1_ypv46"]
 [ext_resource type="Texture2D" uid="uid://ddqohn6m3e7jm" path="res://sprites/characters/party/bonnie/idle.png" id="4_lul8x"]
 [ext_resource type="Texture2D" uid="uid://hwcjkdto8va2" path="res://sprites/characters/party/bonnie/run.png" id="5_vfros"]
 [ext_resource type="Texture2D" uid="uid://jlmvs7pok5wb" path="res://sprites/characters/party/bonnie/shoot.png" id="6_sc2sm"]
 [ext_resource type="Texture2D" uid="uid://dc6h5wiedmrqw" path="res://sprites/AnimationReference/transformref.png" id="7_yanhu"]
 [ext_resource type="Texture2D" uid="uid://ckg6360fvby5m" path="res://sprites/characters/party/bonnie/powerup.png" id="8_4l3yy"]
-
-[sub_resource type="Resource" id="Resource_2jl83"]
-resource_local_to_scene = true
-script = ExtResource("3_ki83l")
-max_hp = 10
-attack = ExtResource("2_oxpqg")
-attack_power = 5
-attack_cooldown = 1.0
-defense_multiplier = 1.0
-movement_speed = 200.0
-energy_dropped = 5
-metadata/_custom_type_script = "uid://bvi03ctahkf7s"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_527dk"]
 size = Vector2(64, 16)
@@ -462,8 +448,7 @@ _data = {
 [node name="Area2D" type="Area2D" groups=["bonnie"]]
 collision_layer = 16
 collision_mask = 8
-script = ExtResource("1_nxm42")
-attributes = SubResource("Resource_2jl83")
+script = ExtResource("1_ypv46")
 follow_range = 350.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

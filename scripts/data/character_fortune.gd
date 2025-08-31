@@ -15,9 +15,9 @@ enum CharacterFortuneType {
 var character : CharacterAttributes.Character;
 var type : CharacterFortuneType;
 
-static func generate_fortune_any(char : CharacterAttributes.Character):
+static func generate_fortune_any(chara : CharacterAttributes.Character):
 	var new_fortune = CharacterFortune.new();
-	new_fortune.character = char;
+	new_fortune.character = chara;
 	new_fortune.type = randi_range(0, 7);
 	return new_fortune;
 	
