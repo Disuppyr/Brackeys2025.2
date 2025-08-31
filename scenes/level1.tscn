@@ -51,6 +51,7 @@ metadata/_custom_type_script = "uid://b7018rjg6lhj2"
 size = Vector2(88, 26)
 
 [node name="StageTemplate" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_wwpf4")
 enemy_waves = Array[ExtResource("2_6sh32")]([SubResource("Resource_bbk5w"), SubResource("Resource_2ku1j"), SubResource("Resource_f31uk"), SubResource("Resource_gnai3")])
 spawn_pos_left = Vector2(-450, 185)
@@ -67,15 +68,19 @@ offset_bottom = -300.0
 [node name="Background" parent="." instance=ExtResource("7_ejswk")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("8_bbk5w")]
+y_sort_enabled = true
 position = Vector2(-224, 184)
 
 [node name="NPCSpawn1" type="Node2D" parent="."]
+y_sort_enabled = true
 position = Vector2(-328, 128)
 
 [node name="NPCSpawn2" type="Node2D" parent="."]
+y_sort_enabled = true
 position = Vector2(-400, 168)
 
 [node name="NPCSpawn3" type="Node2D" parent="."]
+y_sort_enabled = true
 position = Vector2(-328, 192)
 
 [node name="Area2D" type="StaticBody2D" parent="."]

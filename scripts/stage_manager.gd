@@ -26,8 +26,25 @@ func _ready() -> void:
 	on_spawn_next_wave.connect(await spawn_next_wave);
 	apply_stage_fortune();
 	_spawn_selected_character()
-	_spawn_unselected_npcs()
+	_spawn_unselected_npcs_level1()
 
+func _spawn_unselected_npcs_level1() -> void:
+	var character_to_npc = {
+		"res://nodes/entities/player_characters/bonnie.tscn": "res://nodes/entities/npcs/combat/party/bonnie_party.tscn",
+		"res://nodes/entities/player_characters/pearl.tscn": "res://nodes/entities/npcs/combat/party/pearl_party.tscn",
+		"res://nodes/entities/player_characters/rose.tscn": "res://nodes/entities/npcs/combat/party/rose_party.tscn",
+		"res://nodes/entities/player_characters/jane.tscn": "res://nodes/entities/npcs/combat/party/jane_party.tscn"
+	}
+	for i in range(GlobalVars.unselected_character_scenes.size()):
+		var spawn_node = get_node_or_null("NPCSpawn%d" % (i+1))
+		if spawn_node:
+			var npc_scene_path = character_to_npc.get(GlobalVars.unselected_character_scenes[i], null)
+			if npc_scene_path:
+				var npc_scene = load(npc_scene_path)
+				if npc_scene:
+					var npc_instance = npc_scene.instantiate()
+					npc_instance.position = spawn_node.position
+					add_child(npc_instance)
 func _exit_tree() -> void:
 	remove_stage_fortune();
 
@@ -67,6 +84,10 @@ func spawn_next_wave():
 			no_wave_delay = true;
 		current_wave += 1;
 	else:
+		# Last wave finished
+		var player = get_tree().get_first_node_in_group("player")
+		if player and player.has_method("is_alive") and player.is_alive():
+			get_tree().change_scene_to_file("res://scenes/end.tscn")
 		on_stage_complete.emit();
 
 func apply_stage_fortune():

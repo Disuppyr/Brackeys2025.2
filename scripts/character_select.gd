@@ -46,6 +46,11 @@ func _on_character_button_focused(character_index: int) -> void:
 func _on_confirm_button_pressed() -> void:
 	# Store the selected character globally
 	GlobalVars.selected_character_scene = character_scenes[selected_character_index]
+	# Store unselected characters globally
+	GlobalVars.unselected_character_scenes = []
+	for i in range(character_scenes.size()):
+		if i != selected_character_index:
+			GlobalVars.unselected_character_scenes.append(character_scenes[i])
 	print("Confirmed character selection: ", character_scenes[selected_character_index])
 	# Change to the camp scene
 	get_tree().change_scene_to_file("res://scenes/camp.tscn")

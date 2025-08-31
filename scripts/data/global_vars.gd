@@ -2,6 +2,7 @@ extends Node
 
 var player_character : CharacterAttributes.Character = CharacterAttributes.Character.BONNIE;
 var character_attributes : Array[CharacterAttributes] = [null, null, null, null];
+var unselected_character_scenes : Array[String] = []
 var fortune_cookies : int = 3;
 var stage_fortune : StageFortune = null;
 var character_fortunes : Array[CharacterFortune] = [];

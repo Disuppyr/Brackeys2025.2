@@ -20,9 +20,9 @@ var pierced : int = 0;
 var ending : bool = false;
 
 func _ready() -> void:
-	if $Sprite2D:
+	if has_node("Sprite2D") and $Sprite2D:
 		$Sprite2D.texture = sprite;
-	if $AnimatedSprite2D:
+	if has_node("AnimatedSprite2D") and $AnimatedSprite2D:
 		$AnimatedSprite2D.play("default");
 	$Timer.start(duration);
 
@@ -36,7 +36,7 @@ func hit():
 func attack_end():
 	set_deferred("monitorable",false);
 	ending = true;
-	if $AnimationPlayer:
+	if has_node("AnimationPlayer") and $AnimationPlayer:
 		$AnimationPlayer.play("fade");
 	else:
 		queue_free();
@@ -49,4 +49,5 @@ func set_power(value : int):
 	power = value;
 
 func face_left():
-	$Sprite2D.flip_h = true;
+	if has_node("Sprite2D") and $Sprite2D:
+		$Sprite2D.flip_h = true;

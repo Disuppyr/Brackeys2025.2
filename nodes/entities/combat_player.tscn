@@ -1,7 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://dbfa4xtpn7q2t"]
+[gd_scene load_steps=35 format=3 uid="uid://dbfa4xtpn7q2t"]
 
 [ext_resource type="Script" uid="uid://dmxqjg57lhdyl" path="res://scripts/combat_player_controller.gd" id="1_p1at1"]
-[ext_resource type="PackedScene" uid="uid://p8bx1t5pamk1" path="res://nodes/objects/attacks/generic_projectile_attack.tscn" id="2_gei8b"]
 [ext_resource type="Texture2D" uid="uid://begjv8wxy82tc" path="res://sprites/AnimationReference/idleref.png" id="3_gei8b"]
 [ext_resource type="Texture2D" uid="uid://cylwswyg0bqkb" path="res://sprites/AnimationReference/runref.png" id="4_3fwwk"]
 [ext_resource type="Texture2D" uid="uid://dc6h5wiedmrqw" path="res://sprites/AnimationReference/transformref.png" id="4_mvavu"]
@@ -323,6 +322,57 @@ tracks/1/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_eyg7e"]
+resource_name = "Special"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Transformation"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 15)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/AnimatedSprite2D:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.566667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0872665, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_mvavu"]
 resource_name = "Transformation"
 step = 0.0333
@@ -373,57 +423,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 0, 1, 1), Color(0.59688, 0.549927, 1, 1), Color(0.233051, 0.643214, 1, 1), Color(1.34766e-06, 0.71245, 0.709909, 1), Color(1.58831e-06, 0.73845, 0.471164, 1), Color(0.508783, 0.69637, 1.92523e-07, 1), Color(0.75043, 0.606331, 0, 1), Color(0.945473, 0.473692, 0, 1), Color(1, 0.369545, 0.517769, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_eyg7e"]
-resource_name = "Special"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Transformation"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/AnimatedSprite2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 15)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/AnimatedSprite2D:skew")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.566667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.0872665, 0.0872665, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_deg0a"]
@@ -505,11 +504,10 @@ graph_offset = Vector2(-136, -63)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1at1"]
 size = Vector2(500, 50)
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+[node name="CharacterBody2D2" type="CharacterBody2D" groups=["player"]]
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_p1at1")
-attack = ExtResource("2_gei8b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_473v0")
