@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn26135lnbtln"]
+[gd_scene load_steps=11 format=3 uid="uid://dn26135lnbtln"]
 
 [ext_resource type="Script" uid="uid://bu0aycbv6a20o" path="res://scripts/camp.gd" id="1_7aqh4"]
 [ext_resource type="Texture2D" uid="uid://br6y7yhu8mhbi" path="res://sprites/Background/Camp/campsite.png" id="1_tafug"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://7sv0dl0vxt58" path="res://sprites/Background/Camp/campsite-campfire.png" id="4_7aqh4"]
 [ext_resource type="Texture2D" uid="uid://dg2o0lvjei306" path="res://sprites/Background/Camp/campsite-grass.png" id="5_crmxo"]
 [ext_resource type="Texture2D" uid="uid://dp21ukm2725xp" path="res://sprites/Biscuits/FortuneCookie/FortuneClosed.png" id="7_crmxo"]
+[ext_resource type="AudioStream" uid="uid://l2ruqd7aepcl" path="res://music/westsong.wav" id="8_nawe8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tafug"]
 size = Vector2(250, 46.4286)
@@ -107,3 +108,8 @@ texture_normal = ExtResource("7_crmxo")
 [node name="FortuneCookie3" type="TextureButton" parent="Control/HSplitContainer"]
 layout_mode = 2
 texture_normal = ExtResource("7_crmxo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_nawe8")
+autoplay = true
+playback_type = 1

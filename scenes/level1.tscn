@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://4xfafdx5x3pw"]
+[gd_scene load_steps=17 format=3 uid="uid://4xfafdx5x3pw"]
 
 [ext_resource type="Script" uid="uid://qe4q4qe2ddsg" path="res://scripts/stage_manager.gd" id="1_wwpf4"]
 [ext_resource type="Script" uid="uid://b7018rjg6lhj2" path="res://scripts/data/enemy_wave.gd" id="2_6sh32"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cnp0xg4tyvt5e" path="res://nodes/entities/npcs/combat/enemy/lawman.tscn" id="5_u3awl"]
 [ext_resource type="PackedScene" uid="uid://c352kd4xy153q" path="res://nodes/objects/scenery/DesertBackground.tscn" id="7_ejswk"]
 [ext_resource type="PackedScene" uid="uid://dbfa4xtpn7q2t" path="res://nodes/entities/combat_player.tscn" id="8_bbk5w"]
+[ext_resource type="AudioStream" uid="uid://l2ruqd7aepcl" path="res://music/westsong.wav" id="11_u3awl"]
 
 [sub_resource type="Resource" id="Resource_bbk5w"]
 script = ExtResource("2_6sh32")
@@ -102,5 +103,10 @@ shape = SubResource("RectangleShape2D_d3jkd")
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_u3awl")
+autoplay = true
+playback_type = 1
 
 [connection signal="timeout" from="Timer" to="." method="spawn_next_wave"]

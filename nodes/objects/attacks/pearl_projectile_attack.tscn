@@ -9,7 +9,7 @@ _data = {
 }
 point_count = 2
 
-[node name="Path2D" type="Path2D"]
+[node name="Path2D" type="Path2D" groups=["attack", "pearl"]]
 curve = SubResource("Curve2D_hefdf")
 script = ExtResource("1_15r40")
 

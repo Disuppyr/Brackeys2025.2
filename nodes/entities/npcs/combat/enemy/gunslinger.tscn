@@ -1,8 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://bk4kegfn6kjkk"]
+[gd_scene load_steps=33 format=3 uid="uid://bk4kegfn6kjkk"]
 
 [ext_resource type="Script" uid="uid://vx3gemp3mb81" path="res://scripts/enemy.gd" id="1_g3plg"]
 [ext_resource type="PackedScene" uid="uid://p8bx1t5pamk1" path="res://nodes/objects/attacks/generic_projectile_attack.tscn" id="2_4kck2"]
-[ext_resource type="Texture2D" uid="uid://begjv8wxy82tc" path="res://sprites/AnimationReference/idleref.png" id="2_l6fnd"]
 [ext_resource type="Texture2D" uid="uid://c5tk3usk82wfa" path="res://sprites/characters/npcs/gunslinger/idle.png" id="2_yehxx"]
 [ext_resource type="Script" uid="uid://bvi03ctahkf7s" path="res://scripts/data/entity_attributes.gd" id="3_ud1pw"]
 [ext_resource type="Texture2D" uid="uid://cp0snjxs1qr5k" path="res://sprites/characters/npcs/gunslinger/run.png" id="3_yk7tf"]
@@ -53,7 +52,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_l6fnd")
+"texture": ExtResource("2_yehxx")
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_1s41x")
@@ -65,6 +64,9 @@ animations = [{
 "name": &"Transformation",
 "speed": 3.0
 }]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_75rss"]
+animation = &"Death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mvavu"]
 animation = &"Idle"
@@ -90,7 +92,21 @@ advance_condition = &"idle"
 advance_mode = 2
 advance_condition = &"shoot"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4kck2"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ud1pw"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bei80"]
+advance_mode = 2
+advance_condition = &"death"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wi5bp"]
+states/Death/node = SubResource("AnimationNodeAnimation_75rss")
+states/Death/position = Vector2(688, 172)
 states/Idle/node = SubResource("AnimationNodeAnimation_mvavu")
 states/Idle/position = Vector2(535, 100)
 states/Run/node = SubResource("AnimationNodeAnimation_y0e5n")
@@ -98,7 +114,7 @@ states/Run/position = Vector2(535, 192)
 states/Shoot/node = SubResource("AnimationNodeAnimation_incy8")
 states/Shoot/position = Vector2(709, 100)
 states/Start/position = Vector2(208, 100)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c1tu6"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_incy8"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_mtyed"), "Idle", "Shoot", SubResource("AnimationNodeStateMachineTransition_mvavu")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c1tu6"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_incy8"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_mtyed"), "Idle", "Shoot", SubResource("AnimationNodeStateMachineTransition_mvavu"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_4kck2"), "Shoot", "Death", SubResource("AnimationNodeStateMachineTransition_ud1pw"), "Run", "Death", SubResource("AnimationNodeStateMachineTransition_bei80")]
 graph_offset = Vector2(-225, -23)
 
 [sub_resource type="Animation" id="Animation_mtyed"]
@@ -463,6 +479,7 @@ offset = Vector2(0, -643.93)
 tree_root = SubResource("AnimationNodeStateMachine_wi5bp")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/death = false
 parameters/conditions/idle = false
 parameters/conditions/run = false
 parameters/conditions/shoot = false

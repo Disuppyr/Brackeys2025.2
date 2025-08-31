@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c6sh2ynyldcqq"]
 
-[ext_resource type="Script" uid="uid://dk0deu0my00fe" path="res://scripts/bonnie_attack.gd" id="1_ydo4f"]
+[ext_resource type="Script" path="res://scripts/bonnie_attack.gd" id="1_ydo4f"]
 [ext_resource type="Texture2D" uid="uid://waorpxeh23gx" path="res://sprites/characters/party/bonnie/lasso.png" id="2_ydo4f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0rup0"]
