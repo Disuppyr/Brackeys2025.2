@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cckafrwaxxo1c"]
+
+[ext_resource type="Script" uid="uid://bchjkkt6ug3ch" path="res://scripts/projectile_attack.gd" id="1_syk4b"]
+[ext_resource type="PackedScene" uid="uid://2g5ukg03xgbh" path="res://nodes/objects/attacks/specials/pearl_special.tscn" id="2_syk4b"]
+
+[sub_resource type="Curve2D" id="Curve2D_hefdf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 800, 0)
+}
+point_count = 2
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_hefdf")
+script = ExtResource("1_syk4b")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+loop = false
+
+[node name="GenericAttack" parent="PathFollow2D" instance=ExtResource("2_syk4b")]
+
+[connection signal="child_order_changed" from="PathFollow2D" to="." method="_on_child_removed"]

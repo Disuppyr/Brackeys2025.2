@@ -10,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(-150, 366)
 script = ExtResource("1_860tx")
 stats_uis = [NodePath("StatsContainer/BonnieStats"), NodePath("StatsContainer/JaneStats"), NodePath("StatsContainer/PearlStats"), NodePath("StatsContainer/RoseStats")]
 hp_uis = [NodePath("StatsContainer/BonnieStats/ColorRect/hp_bar"), NodePath("StatsContainer/JaneStats/ColorRect/hp_bar"), NodePath("StatsContainer/PearlStats/ColorRect/hp_bar"), NodePath("StatsContainer/RoseStats/ColorRect/hp_bar")]

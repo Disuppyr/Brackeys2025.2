@@ -1,0 +1,142 @@
+[gd_scene load_steps=13 format=3 uid="uid://7nuyeigoix8k"]
+
+[ext_resource type="Script" uid="uid://csf043anenhbb" path="res://scripts/attack.gd" id="1_0o4tw"]
+[ext_resource type="Texture2D" uid="uid://bcqc16wy34bwx" path="res://sprites/projectiles/cow.png" id="3_pbjd6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0rup0"]
+radius = 20.0
+
+[sub_resource type="Animation" id="Animation_uu2ky"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_oy0u5"]
+resource_name = "fade"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pbjd6"]
+resource_name = "run"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(3, 1, 3),
+"update": 0,
+"values": [Vector2(0, -55), Vector2(0, -40), Vector2(0, -55)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.47035e-08, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [0.349066, 0.0, -0.349066]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_14bgd"]
+_data = {
+&"RESET": SubResource("Animation_uu2ky"),
+&"fade": SubResource("Animation_oy0u5"),
+&"run": SubResource("Animation_pbjd6")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pbjd6"]
+animation = &"fade"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cj01q"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yaw7u"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iccwb"]
+advance_mode = 2
+advance_condition = &"fade"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8v2x1"]
+states/Start/position = Vector2(237, 100)
+states/fade/node = SubResource("AnimationNodeAnimation_pbjd6")
+states/fade/position = Vector2(519, 100)
+states/run/node = SubResource("AnimationNodeAnimation_cj01q")
+states/run/position = Vector2(371, 100)
+transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_yaw7u"), "run", "fade", SubResource("AnimationNodeStateMachineTransition_iccwb")]
+
+[node name="GenericAttack" type="Area2D" groups=["attack"]]
+collision_layer = 8
+collision_mask = 17
+script = ExtResource("1_0o4tw")
+power = 1
+pierce = 5
+knockback = 100.0
+duration = 0.5
+sprite = ExtResource("3_pbjd6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0rup0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -53.8205)
+scale = Vector2(0.067, 0.067)
+texture = ExtResource("3_pbjd6")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_14bgd")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_8v2x1")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/fade = false
+
+[connection signal="timeout" from="Timer" to="." method="attack_end"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="attack_free"]

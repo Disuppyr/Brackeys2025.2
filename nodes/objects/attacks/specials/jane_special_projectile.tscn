@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbhk7tyy1o6u3"]
+
+[ext_resource type="Script" uid="uid://bchjkkt6ug3ch" path="res://scripts/projectile_attack.gd" id="1_uctdx"]
+[ext_resource type="PackedScene" uid="uid://b5r7psjofsesr" path="res://nodes/objects/attacks/specials/jane_special.tscn" id="2_uctdx"]
+[ext_resource type="Texture2D" uid="uid://dmbybwf3i2l7t" path="res://sprites/projectiles/star.png" id="3_qvaql"]
+
+[sub_resource type="Curve2D" id="Curve2D_hefdf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 800, 0)
+}
+point_count = 2
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_hefdf")
+script = ExtResource("1_uctdx")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+loop = false
+
+[node name="GenericAttack" parent="PathFollow2D" instance=ExtResource("2_uctdx")]
+source = 1
+sprite = ExtResource("3_qvaql")
+
+[connection signal="child_order_changed" from="PathFollow2D" to="." method="_on_child_removed"]
