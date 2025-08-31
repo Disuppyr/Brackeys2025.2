@@ -85,9 +85,7 @@ func spawn_next_wave():
 		current_wave += 1;
 	else:
 		# Last wave finished
-		var player = get_tree().get_first_node_in_group("player")
-		if player and player.has_method("is_alive") and player.is_alive():
-			get_tree().change_scene_to_file("res://scenes/end.tscn")
+		get_tree().change_scene_to_file("res://scenes/end.tscn")
 		on_stage_complete.emit();
 
 func apply_stage_fortune():

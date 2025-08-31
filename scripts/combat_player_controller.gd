@@ -22,27 +22,18 @@ func _physics_process(delta: float) -> void:
 		#if current_auto_attack_cooldown == 0 and player_state == PlayerState.ATTACKING:
 			#player_state = PlayerState.MOVING;
 	if current_auto_attack_cooldown == 0.0 and targets.size() > 0:
-		# Map selected character to their attack scene
-		var character_attack_map = {
-			CharacterAttributes.Character.BONNIE: preload("res://nodes/objects/attacks/bonnie_attack.tscn"),
-			CharacterAttributes.Character.ROSE: preload("res://nodes/objects/attacks/generic_attack.tscn"),
-			CharacterAttributes.Character.PEARL: preload("res://nodes/objects/attacks/pearl_attack.tscn"),
-			CharacterAttributes.Character.JANE: preload("res://nodes/objects/attacks/jane_attack.tscn")
-		}
-		var selected_character = GlobalVars.player_character
-		var attack_scene = character_attack_map.get(selected_character, null)
-		if attack_scene:
-			var attack_instance = attack_scene.instantiate()
-			if facing_left:
-				attack_instance.position = Vector2(position.x - 48, position.y)
-				if attack_instance.has_method("face_left"):
-					attack_instance.face_left()
-			else:
-				attack_instance.position = Vector2(position.x + 48, position.y)
-			get_parent().add_child(attack_instance)
-			current_auto_attack_cooldown = auto_attack_cooldown
-			# Trigger shooting animation
-			trigger_shoot_animation()
+		#player_state = PlayerState.ATTACKING;
+		var attack_instance = GlobalVars.character_attributes[GlobalVars.player_character].attack.instantiate();
+		if facing_left:
+			attack_instance.position = Vector2(position.x - 48, position.y);
+			if attack_instance.has_method("face_left"):
+				attack_instance.face_left();
+		else:
+			attack_instance.position = Vector2(position.x + 48, position.y);
+		get_parent().add_child(attack_instance);
+		current_auto_attack_cooldown = auto_attack_cooldown;
+		# Trigger shooting animation
+		trigger_shoot_animation();
 	if player_state == PlayerState.DYING:
 		var knockback_dir = Vector2.DOWN;
 		if position.y > 400:
