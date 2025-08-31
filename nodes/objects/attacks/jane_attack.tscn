@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dthar1h11du5m"]
+[gd_scene load_steps=7 format=3 uid="uid://dthar1h11du5m"]
 
 [ext_resource type="Script" uid="uid://csf043anenhbb" path="res://scripts/attack.gd" id="1_vbro6"]
-[ext_resource type="Texture2D" uid="uid://cm5lntdejc57e" path="res://sprites/bullet.png" id="2_e2ggy"]
 [ext_resource type="Texture2D" uid="uid://d2xl0mgwr0g5w" path="res://sprites/characters/party/jane/proj.png" id="3_e2ggy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0rup0"]
@@ -52,8 +51,8 @@ source = 1
 power = 1
 pierce = 2
 knockback = 20.0
-duration = 0.5
-sprite = ExtResource("2_e2ggy")
+duration = 0.2
+sprite = ExtResource("3_e2ggy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0rup0")

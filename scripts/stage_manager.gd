@@ -11,7 +11,7 @@ signal on_stage_complete;
 @export var spawn_pos_right : Vector2 = Vector2.ZERO;
 @export var explosion : PackedScene;
 @export var item_drops : Array[PackedScene] = [];
-@export var item_rate : float = 0.90;
+@export var item_rate : float = 0.05;
 
 var current_wave : int = 0;
 var no_wave_delay : bool = false;

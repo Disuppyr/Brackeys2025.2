@@ -22,3 +22,9 @@ func _on_child_removed() -> void:
 func face_left():
 	rotation = PI;
 	$PathFollow2D.rotation = -PI;
+	if $PathFollow2D/GenericAttack:
+		$PathFollow2D/GenericAttack.face_left();
+
+func set_power(value : int):
+	if $PathFollow2D/GenericAttack:
+		$PathFollow2D/GenericAttack.set_power(value);

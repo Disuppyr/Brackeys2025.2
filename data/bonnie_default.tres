@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CharacterAttributes" load_steps=2 format=3 uid="uid://d05lvf1fnkacn"]
+[gd_resource type="Resource" script_class="CharacterAttributes" load_steps=3 format=3 uid="uid://d05lvf1fnkacn"]
 
+[ext_resource type="PackedScene" uid="uid://cigf6cbhsaw2f" path="res://nodes/objects/attacks/bonnie_projectile_attack.tscn" id="1_ecm3b"]
 [ext_resource type="Script" uid="uid://b3upar75roe87" path="res://scripts/data/character_attributes.gd" id="1_l7ovx"]
 
 [resource]
@@ -12,6 +13,7 @@ special_cost = 50
 heal_amount = 10
 heal_cost = 15
 max_hp = 40
+attack = ExtResource("1_ecm3b")
 attack_power = 5
 attack_cooldown = 1.0
 defense_multiplier = 1.0
