@@ -83,6 +83,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2D_entered(area: Area2D) -> void:
 	if area as Interactable != null:
+		if interactable != null:
+			interactable.exit_range();
 		interactable = area;
 		area.enter_range();
 

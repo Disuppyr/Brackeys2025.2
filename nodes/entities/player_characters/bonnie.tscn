@@ -513,7 +513,7 @@ graph_offset = Vector2(-100, -47)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1at1"]
 size = Vector2(500, 50)
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["bonnie", "player"]]
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_iow0a")

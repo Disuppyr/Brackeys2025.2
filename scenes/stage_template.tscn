@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3k4hwy1xupyx"]
+[gd_scene load_steps=9 format=3 uid="uid://d3k4hwy1xupyx"]
 
 [ext_resource type="Script" uid="uid://qe4q4qe2ddsg" path="res://scripts/stage_manager.gd" id="1_0udi1"]
 [ext_resource type="PackedScene" uid="uid://dkq5niclic8w" path="res://nodes/ui/stage_ui.tscn" id="2_xfw8j"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dbfa4xtpn7q2t" path="res://nodes/entities/combat_player.tscn" id="3_ijnun"]
 [ext_resource type="PackedScene" uid="uid://p8bx1t5pamk1" path="res://nodes/objects/attacks/generic_projectile_attack.tscn" id="4_5aoxf"]
 [ext_resource type="Script" uid="uid://bvi03ctahkf7s" path="res://scripts/data/entity_attributes.gd" id="5_rudhl"]
+[ext_resource type="PackedScene" uid="uid://cxqb16awbwkfg" path="res://nodes/objects/items/hard_tack.tscn" id="7_5aoxf"]
 
 [sub_resource type="Resource" id="Resource_3p2sd"]
 resource_local_to_scene = true
@@ -20,9 +21,11 @@ energy_dropped = 5
 metadata/_custom_type_script = "uid://bvi03ctahkf7s"
 
 [node name="StageTemplate" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_0udi1")
 spawn_pos_left = Vector2(-450, 150)
 spawn_pos_right = Vector2(450, 150)
+item_drops = Array[PackedScene]([ExtResource("7_5aoxf")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -44,3 +47,8 @@ position = Vector2(0, 128)
 [node name="Area2D" parent="." instance=ExtResource("3_bxx4q")]
 position = Vector2(168, 64)
 attributes = SubResource("Resource_3p2sd")
+
+[node name="HardTack" parent="." instance=ExtResource("7_5aoxf")]
+position = Vector2(272, 168)
+
+[connection signal="on_death" from="Area2D" to="." method="spawn_item"]

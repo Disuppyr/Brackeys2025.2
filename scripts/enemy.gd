@@ -16,7 +16,7 @@ enum EnemyState {
 	DYING
 }
 
-signal on_death;
+signal on_death(position);
 
 @export var attributes : EntityAttributes;
 @export var behavior : EnemyBehavior = EnemyBehavior.TARGET_RANDOM;

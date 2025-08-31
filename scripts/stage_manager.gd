@@ -11,7 +11,7 @@ signal on_stage_complete;
 @export var spawn_pos_right : Vector2 = Vector2.ZERO;
 @export var explosion : PackedScene;
 @export var item_drops : Array[PackedScene] = [];
-@export var item_rate : float = 0.05;
+@export var item_rate : float = 0.90;
 
 var current_wave : int = 0;
 var no_wave_delay : bool = false;
@@ -108,7 +108,7 @@ func spawn_item(position : Vector2):
 	if item_drops.size() > 0:
 		var item = (item_drops.pick_random() as PackedScene).instantiate() as Node2D;
 		item.position = position;
-		add_child(item);
+		call_deferred("add_child", item);
 
 func spawn_explosion(position : Vector2):
 	var new_explosion = explosion.instantiate() as Node2D;
