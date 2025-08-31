@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn26135lnbtln"]
+[gd_scene load_steps=10 format=3 uid="uid://dn26135lnbtln"]
 
 [ext_resource type="Script" uid="uid://bu0aycbv6a20o" path="res://scripts/camp.gd" id="1_7aqh4"]
 [ext_resource type="Texture2D" uid="uid://br6y7yhu8mhbi" path="res://sprites/Background/Camp/campsite.png" id="1_tafug"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dbfa4xtpn7q2t" path="res://nodes/entities/combat_player.tscn" id="3_nsjlq"]
 [ext_resource type="Texture2D" uid="uid://7sv0dl0vxt58" path="res://sprites/Background/Camp/campsite-campfire.png" id="4_7aqh4"]
 [ext_resource type="Texture2D" uid="uid://dg2o0lvjei306" path="res://sprites/Background/Camp/campsite-grass.png" id="5_crmxo"]
+[ext_resource type="Texture2D" uid="uid://dp21ukm2725xp" path="res://sprites/Biscuits/FortuneCookie/FortuneClosed.png" id="7_crmxo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tafug"]
 size = Vector2(250, 46.4286)
@@ -78,3 +79,31 @@ position = Vector2(136, -2)
 
 [node name="NPCSpawn3" type="Node2D" parent="."]
 position = Vector2(249, 159)
+
+[node name="Control" type="Control" parent="."]
+z_index = 2
+y_sort_enabled = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -489.0
+offset_top = 226.0
+offset_right = -449.0
+offset_bottom = 266.0
+
+[node name="HSplitContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+offset_right = 1430.0
+offset_bottom = 415.0
+scale = Vector2(0.125, 0.125)
+
+[node name="FortuneCookie1" type="TextureButton" parent="Control/HSplitContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_crmxo")
+
+[node name="FortuneCookie2" type="TextureButton" parent="Control/HSplitContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_crmxo")
+
+[node name="FortuneCookie3" type="TextureButton" parent="Control/HSplitContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_crmxo")

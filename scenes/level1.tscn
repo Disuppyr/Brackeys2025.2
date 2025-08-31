@@ -27,11 +27,8 @@ item_drops = Array[PackedScene]([ExtResource("3_ru4tf")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="StageUI" parent="Camera2D" node_paths=PackedStringArray("stats_uis", "hp_uis", "energy_uis") instance=ExtResource("2_m7ahb")]
+[node name="StageUI" parent="Camera2D" instance=ExtResource("2_m7ahb")]
 offset_top = -300.0
 offset_bottom = -300.0
-stats_uis = [null]
-hp_uis = [null]
-energy_uis = [null]
 
 [node name="Background" parent="." instance=ExtResource("7_ejswk")]

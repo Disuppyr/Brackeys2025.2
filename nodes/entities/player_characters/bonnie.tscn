@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dvptdu0yiknh"]
+[gd_scene load_steps=37 format=3 uid="uid://dvptdu0yiknh"]
 
 [ext_resource type="Script" uid="uid://dmxqjg57lhdyl" path="res://scripts/combat_player_controller.gd" id="1_iow0a"]
 [ext_resource type="PackedScene" uid="uid://p8bx1t5pamk1" path="res://nodes/objects/attacks/generic_projectile_attack.tscn" id="2_4shmb"]
@@ -380,6 +380,57 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_oxd0c"]
+resource_name = "Special"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Transformation"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 15)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/AnimatedSprite2D:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.566667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0872665, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_deg0a"]
 _data = {
 &"Death": SubResource("Animation_mtyed"),
@@ -388,6 +439,7 @@ _data = {
 &"RESET": SubResource("Animation_mk0wr"),
 &"Run": SubResource("Animation_c1tu6"),
 &"Shoot": SubResource("Animation_deg0a"),
+&"Special": SubResource("Animation_oxd0c"),
 &"Transformation": SubResource("Animation_mvavu"),
 &"hurt": SubResource("Animation_0rq8y")
 }
@@ -403,6 +455,9 @@ animation = &"Run"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_incy8"]
 animation = &"Shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_127m7"]
+animation = &"Special"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oxd0c"]
 animation = &"Transformation"
@@ -429,6 +484,13 @@ advance_condition = &"transformation"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7iuso"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3je60"]
+advance_mode = 2
+advance_condition = &"special"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eumhl"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_eyg7e"]
 states/Float/node = SubResource("AnimationNodeAnimation_0rq8y")
 states/Float/position = Vector2(709, 6)
@@ -438,10 +500,12 @@ states/Run/node = SubResource("AnimationNodeAnimation_y0e5n")
 states/Run/position = Vector2(535, 192)
 states/Shoot/node = SubResource("AnimationNodeAnimation_incy8")
 states/Shoot/position = Vector2(709, 100)
+states/Special/node = SubResource("AnimationNodeAnimation_127m7")
+states/Special/position = Vector2(828, 6)
 states/Start/position = Vector2(208, 100)
 states/Transformation/node = SubResource("AnimationNodeAnimation_oxd0c")
 states/Transformation/position = Vector2(535, 6)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c1tu6"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_incy8"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_mtyed"), "Idle", "Shoot", SubResource("AnimationNodeStateMachineTransition_mvavu"), "Idle", "Transformation", SubResource("AnimationNodeStateMachineTransition_127m7"), "Transformation", "Float", SubResource("AnimationNodeStateMachineTransition_7iuso")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c1tu6"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_incy8"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_mtyed"), "Idle", "Shoot", SubResource("AnimationNodeStateMachineTransition_mvavu"), "Idle", "Transformation", SubResource("AnimationNodeStateMachineTransition_127m7"), "Transformation", "Float", SubResource("AnimationNodeStateMachineTransition_7iuso"), "Float", "Special", SubResource("AnimationNodeStateMachineTransition_3je60"), "Special", "Float", SubResource("AnimationNodeStateMachineTransition_eumhl")]
 graph_offset = Vector2(-100, -47)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1at1"]
@@ -489,6 +553,7 @@ anim_player = NodePath("../Node2D/AnimatedSprite2D/AnimationPlayer")
 parameters/conditions/idle = false
 parameters/conditions/run = false
 parameters/conditions/shoot = false
+parameters/conditions/special = false
 parameters/conditions/transformation = false
 
 [node name="TargetingArea" type="Area2D" parent="."]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dmqce7v7x2ix3" path="res://scripts/stage_ui.gd" id="1_860tx"]
 [ext_resource type="Texture2D" uid="uid://b7mf1a4nx0wfx" path="res://sprites/placeholder/placeholder_circle1.png" id="2_5fbep"]
 
-[node name="StageUI" type="Control"]
+[node name="StageUI" type="Control" node_paths=PackedStringArray("stats_uis", "hp_uis", "energy_uis")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_860tx")
+stats_uis = [NodePath("StatsContainer/BonnieStats"), NodePath("StatsContainer/JaneStats"), NodePath("StatsContainer/PearlStats"), NodePath("StatsContainer/RoseStats")]
+hp_uis = [NodePath("StatsContainer/BonnieStats/ColorRect/hp_bar"), NodePath("StatsContainer/JaneStats/ColorRect/hp_bar"), NodePath("StatsContainer/PearlStats/ColorRect/hp_bar"), NodePath("StatsContainer/RoseStats/ColorRect/hp_bar")]
+energy_uis = [NodePath("StatsContainer/BonnieStats/ColorRect2/energy_bar"), NodePath("StatsContainer/JaneStats/ColorRect2/energy_bar"), NodePath("StatsContainer/PearlStats/ColorRect2/energy_bar"), NodePath("StatsContainer/RoseStats/ColorRect2/energy_bar")]
 
 [node name="StatsContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
