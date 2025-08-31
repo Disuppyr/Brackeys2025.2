@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CharacterAttributes" load_steps=2 format=3 uid="uid://df0u02blodday"]
+[gd_resource type="Resource" script_class="CharacterAttributes" load_steps=3 format=3 uid="uid://df0u02blodday"]
 
 [ext_resource type="Script" uid="uid://b3upar75roe87" path="res://scripts/data/character_attributes.gd" id="1_4js2x"]
+[ext_resource type="PackedScene" uid="uid://d3xng4b8rsk7d" path="res://nodes/objects/attacks/rose_projectile_attack.tscn" id="1_ndjbf"]
 
 [resource]
 script = ExtResource("1_4js2x")
@@ -12,6 +13,7 @@ special_cost = 50
 heal_amount = 10
 heal_cost = 15
 max_hp = 40
+attack = ExtResource("1_ndjbf")
 attack_power = 5
 attack_cooldown = 1.0
 defense_multiplier = 1.0

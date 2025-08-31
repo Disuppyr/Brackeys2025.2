@@ -49,16 +49,16 @@ func _process(delta: float) -> void:
 						facing_left = true;
 						$Node2D/AnimatedSprite2D.flip_h = true;
 					state_machine.travel("Shoot");
-					#if !GlobalVars.has_fortune(character, CharacterFortune.CharacterFortuneType.JAMMED) or randf() < 0.8:
-						#var attack_instance = GlobalVars.character_attributes[character].attack.instantiate();
-						## TODO set attack power here
-						#if facing_left:
-							#attack_instance.position = Vector2(position.x - 48, position.y);
-							#if attack_instance.has_method("face_left"):
-								#attack_instance.face_left();
-						#else:
-							#attack_instance.position = Vector2(position.x + 48, position.y);
-						#get_parent().add_child(attack_instance);
+					if !GlobalVars.has_fortune(character, CharacterFortune.CharacterFortuneType.JAMMED) or randf() < 0.8:
+						var attack_instance = GlobalVars.character_attributes[character].attack.instantiate();
+						# TODO set attack power here
+						if facing_left:
+							attack_instance.position = Vector2(position.x - 48, position.y);
+							if attack_instance.has_method("face_left"):
+								attack_instance.face_left();
+						else:
+							attack_instance.position = Vector2(position.x + 48, position.y);
+						get_parent().add_child(attack_instance);
 				else:
 					state = EnemyState.MOVING;
 					state_machine.travel("Run")

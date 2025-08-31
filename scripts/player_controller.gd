@@ -4,6 +4,7 @@ class_name PlayerController
 enum PlayerState {
 	MOVING,
 	INTERACTING,
+	ATTACKING,
 	DYING
 }
 
@@ -55,23 +56,24 @@ func _physics_process(delta: float) -> void:
 		# Update shooting timer
 		if is_shooting:
 			shoot_frame_timer -= delta;
+			velocity = Vector2.ZERO;
 			if shoot_frame_timer <= 0.0:
 				is_shooting = false;
-		
-		# Handle horizontal movement
-		if normalized_input.length() > 0.0:
-			square_velocity += normalized_input * walk_acceleration;
-			if square_velocity.length() > max_walk_speed:
-				square_velocity = square_velocity.normalized() * max_walk_speed;
 		else:
-			square_velocity *= slowdown_multiplier;
-		
-		# Set horizontal velocity and move
-		velocity = Vector2(square_velocity.x, square_velocity.y * 0.5);
-		if velocity.x > 0 && facing_left:
-			facing_left = false;
-		if velocity.x < 0 && !facing_left:
-			facing_left = true;
+			# Handle horizontal movement
+			if normalized_input.length() > 0.0:
+				square_velocity += normalized_input * walk_acceleration;
+				if square_velocity.length() > max_walk_speed:
+					square_velocity = square_velocity.normalized() * max_walk_speed;
+			else:
+				square_velocity *= slowdown_multiplier;
+			
+			# Set horizontal velocity and move
+			velocity = Vector2(square_velocity.x, square_velocity.y * 0.5);
+			if velocity.x > 0 && facing_left:
+				facing_left = false;
+			if velocity.x < 0 && !facing_left:
+				facing_left = true;
 		move_and_slide();
 		
 		# Update animations based on state

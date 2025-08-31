@@ -2,7 +2,6 @@ extends PlayerController
 class_name CombatPlayerController
 
 @export var auto_attack_cooldown : float = 1.0;
-@export var attack : PackedScene;
 
 var targets : Array[Node2D] = [];
 var current_auto_attack_cooldown : float = 1.0;
@@ -20,8 +19,11 @@ func _physics_process(delta: float) -> void:
 		$TargetingArea.rotation = 0;
 	if current_auto_attack_cooldown > 0.0:
 		current_auto_attack_cooldown = max(0.0, current_auto_attack_cooldown - delta);
+		#if current_auto_attack_cooldown == 0 and player_state == PlayerState.ATTACKING:
+			#player_state = PlayerState.MOVING;
 	if current_auto_attack_cooldown == 0.0 and targets.size() > 0:
-		var attack_instance = attack.instantiate();
+		#player_state = PlayerState.ATTACKING;
+		var attack_instance = GlobalVars.character_attributes[GlobalVars.player_character].attack.instantiate();
 		if facing_left:
 			attack_instance.position = Vector2(position.x - 48, position.y);
 			if attack_instance.has_method("face_left"):

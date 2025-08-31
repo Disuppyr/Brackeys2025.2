@@ -37,14 +37,14 @@ var state_machine : AnimationNodeStateMachinePlayback;
 func _ready() -> void:
 	state_machine = $AnimationTree["parameters/playback"];
 	attributes.current_hp = attributes.max_hp;
-	assign_target();
+	cooldown = 0.5;
 
 func _process(delta: float) -> void:
 	if state == EnemyState.IDLE:
 		if cooldown > 0.0:
 			cooldown = max(0.0, cooldown - delta);
 		else:
-			if !GlobalVars.get_targetable_characters().has(target_id):
+			if target == null or !GlobalVars.get_targetable_characters().has(target_id):
 				assign_target();
 			if target:
 				if abs(target.position.x - position.x) <= follow_range and abs(target.position.y - position.y) <= 32.0:
@@ -150,6 +150,9 @@ func _on_area_entered(area: Area2D) -> void:
 					state_machine.travel("Death");
 					invulnerability = 0.8;
 					$AnimationPlayer.play("hurt");
+					GlobalVars.character_attributes[attack_area.source].current_energy = min(GlobalVars.character_attributes[attack_area.source].max_energy, GlobalVars.character_attributes[attack_area.source].current_energy + attributes.energy_dropped);
+					GlobalVars.KO_count[attack_area.source] += 1;
+					GlobalVars.last_KO = attack_area.source;
 					on_death.emit(position);
 				else:
 					state = EnemyState.HURTING;

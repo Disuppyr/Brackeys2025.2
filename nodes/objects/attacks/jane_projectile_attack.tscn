@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_hefdf"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 800, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 320, 0)
 }
 point_count = 2
 
@@ -18,5 +18,7 @@ rotates = false
 loop = false
 
 [node name="GenericAttack" parent="PathFollow2D" instance=ExtResource("2_j1b3v")]
+power = 2
+pierce = 4
 
 [connection signal="child_order_changed" from="PathFollow2D" to="." method="_on_child_removed"]

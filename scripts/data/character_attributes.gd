@@ -18,11 +18,14 @@ enum Character {
 @export var heal_cost : int = 10;
 
 var current_energy : int = 0:
-	set(value):
-		changed.emit();
-		current_energy = value;
+	set = _set_current_energy;
+
 var incapacitated : bool = false;
 
 func _set_current_hp(value):
-	changed.emit();
 	super(value);
+	changed.emit();
+
+func _set_current_energy(value):
+	current_hp = value;
+	changed.emit();

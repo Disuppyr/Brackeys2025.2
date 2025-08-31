@@ -1,7 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://d4mx5jv0wpwy0"]
+[gd_scene load_steps=36 format=3 uid="uid://d4mx5jv0wpwy0"]
 
 [ext_resource type="Script" uid="uid://dmxqjg57lhdyl" path="res://scripts/combat_player_controller.gd" id="1_etxcx"]
-[ext_resource type="PackedScene" uid="uid://p8bx1t5pamk1" path="res://nodes/objects/attacks/generic_projectile_attack.tscn" id="2_f47g4"]
 [ext_resource type="Texture2D" uid="uid://p4pwrlc4jug7" path="res://sprites/characters/party/jane/idle.png" id="3_f47g4"]
 [ext_resource type="Texture2D" uid="uid://dlpqaxl54nle0" path="res://sprites/characters/party/jane/run.png" id="4_etxcx"]
 [ext_resource type="Texture2D" uid="uid://cd8uhqhmr1jnc" path="res://sprites/characters/party/jane/shoot.png" id="5_f47g4"]
@@ -514,7 +513,6 @@ size = Vector2(500, 50)
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_etxcx")
-attack = ExtResource("2_f47g4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_473v0")

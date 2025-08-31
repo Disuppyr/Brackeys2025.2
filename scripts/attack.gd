@@ -38,3 +38,9 @@ func attack_end():
 func attack_free(animation : StringName):
 	if animation == "fade":
 		queue_free();
+
+func set_power(value : int):
+	power = value;
+
+func face_left():
+	$Sprite2D.flip_h = true;
