@@ -31,7 +31,8 @@ var shoot_frame_duration : float = 0.2;  # How long to show the shooting animati
 var shoot_frame_timer : float = 0.0;  # Timer for shooting animation display
 
 func _enter_tree() -> void:
-	position = spawn_position;
+	pass
+	#position = spawn_position;
 
 func _process(_delta: float) -> void:
 	var move_input = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"));

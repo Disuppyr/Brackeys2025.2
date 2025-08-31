@@ -5,4 +5,5 @@ func _physics_process(delta: float) -> void:
 	$TextureRect.size.x = 20 + $PathFollow2D.position.x;
 
 func face_left():
-	$TextureRect.position.y += -1;
+	super.face_left();
+	$TextureRect.position.y = 58;

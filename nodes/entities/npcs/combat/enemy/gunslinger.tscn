@@ -1,12 +1,26 @@
-[gd_scene load_steps=27 format=3 uid="uid://bk4kegfn6kjkk"]
+[gd_scene load_steps=30 format=3 uid="uid://bk4kegfn6kjkk"]
 
 [ext_resource type="Script" uid="uid://vx3gemp3mb81" path="res://scripts/enemy.gd" id="1_g3plg"]
+[ext_resource type="PackedScene" uid="uid://p8bx1t5pamk1" path="res://nodes/objects/attacks/generic_projectile_attack.tscn" id="2_4kck2"]
 [ext_resource type="Texture2D" uid="uid://begjv8wxy82tc" path="res://sprites/AnimationReference/idleref.png" id="2_l6fnd"]
 [ext_resource type="Texture2D" uid="uid://c5tk3usk82wfa" path="res://sprites/characters/npcs/gunslinger/idle.png" id="2_yehxx"]
+[ext_resource type="Script" uid="uid://bvi03ctahkf7s" path="res://scripts/data/entity_attributes.gd" id="3_ud1pw"]
 [ext_resource type="Texture2D" uid="uid://cp0snjxs1qr5k" path="res://sprites/characters/npcs/gunslinger/run.png" id="3_yk7tf"]
 [ext_resource type="Texture2D" uid="uid://q53deccpnhhw" path="res://sprites/characters/npcs/gunslinger/shoot.png" id="4_h3fii"]
 [ext_resource type="Texture2D" uid="uid://dc6h5wiedmrqw" path="res://sprites/AnimationReference/transformref.png" id="5_1s41x"]
 [ext_resource type="Texture2D" uid="uid://da7b7o8n3q6re" path="res://sprites/AnimationReference/powerupref.png" id="6_mre55"]
+
+[sub_resource type="Resource" id="Resource_bei80"]
+resource_local_to_scene = true
+script = ExtResource("3_ud1pw")
+max_hp = 15
+attack = ExtResource("2_4kck2")
+attack_power = 5
+attack_cooldown = 1.5
+defense_multiplier = 1.0
+movement_speed = 250.0
+energy_dropped = 5
+metadata/_custom_type_script = "uid://bvi03ctahkf7s"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_527dk"]
 size = Vector2(64, 16)
@@ -427,6 +441,8 @@ _data = {
 collision_layer = 16
 collision_mask = 8
 script = ExtResource("1_g3plg")
+attributes = SubResource("Resource_bei80")
+follow_range = 320.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_527dk")

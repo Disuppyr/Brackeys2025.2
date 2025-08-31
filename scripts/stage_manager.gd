@@ -55,17 +55,17 @@ func spawn_next_wave():
 			if do_power_boost:
 				spawned_enemy.attributes.attack_power *= 1.6;
 			if enemy_waves[current_wave].spawn_location == EnemyWave.SpawnLocation.LEFT or (enemy_waves[current_wave].spawn_location == EnemyWave.SpawnLocation.BOTH and randi_range(0, 1) == 0):
-				spawned_enemy.position = Vector2(spawn_pos_left.x, spawn_pos_left.y + randi_range(-125, 125));
+				spawned_enemy.position = Vector2(spawn_pos_left.x, spawn_pos_left.y + randi_range(-75, 75));
 			else:
-				spawned_enemy.position = Vector2(spawn_pos_right.x, spawn_pos_right.y + randi_range(-125, 125));
+				spawned_enemy.position = Vector2(spawn_pos_right.x, spawn_pos_right.y + randi_range(-75, 75));
 			add_child(spawned_enemy);
 			if enemy_waves[current_wave].spawn_interval > 0:
 				await get_tree().create_timer(enemy_waves[current_wave].spawn_interval).timeout;
-		current_wave += 1;
 		if enemy_waves[current_wave].next_wave_delay >= 0:
-			get_tree().create_timer(enemy_waves[current_wave].next_wave_delay).timeout.connect(on_spawn_next_wave.emit);
+			get_tree().create_timer(enemy_waves[current_wave].next_wave_delay + 0.01).timeout.connect(on_spawn_next_wave.emit);
 		else:
 			no_wave_delay = true;
+		current_wave += 1;
 	else:
 		on_stage_complete.emit();
 
@@ -133,14 +133,14 @@ func _spawn_selected_character() -> void:
 	var player_position = default_player.position
 	var player_parent = default_player.get_parent()
 	
-	# Remove the default player
-	default_player.queue_free()
-	
 	# Instance the selected character
 	var new_player = character_scene.instantiate()
 	
 	# Set the position to match the original player
 	new_player.position = player_position
+	
+	# Remove the default player
+	default_player.queue_free()
 	
 	# Add the new player to the scene
 	player_parent.add_child(new_player)

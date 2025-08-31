@@ -20,7 +20,10 @@ var pierced : int = 0;
 var ending : bool = false;
 
 func _ready() -> void:
-	$Sprite2D.texture = sprite;
+	if $Sprite2D:
+		$Sprite2D.texture = sprite;
+	if $AnimatedSprite2D:
+		$AnimatedSprite2D.play("default");
 	$Timer.start(duration);
 
 func hit():
@@ -33,7 +36,10 @@ func hit():
 func attack_end():
 	set_deferred("monitorable",false);
 	ending = true;
-	$AnimationPlayer.play("fade");
+	if $AnimationPlayer:
+		$AnimationPlayer.play("fade");
+	else:
+		queue_free();
 
 func attack_free(animation : StringName):
 	if animation == "fade":

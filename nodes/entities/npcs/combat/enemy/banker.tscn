@@ -1,12 +1,26 @@
-[gd_scene load_steps=27 format=3 uid="uid://kurdxpdsu5i0"]
+[gd_scene load_steps=30 format=3 uid="uid://kurdxpdsu5i0"]
 
 [ext_resource type="Script" uid="uid://vx3gemp3mb81" path="res://scripts/enemy.gd" id="1_uwg2o"]
 [ext_resource type="Texture2D" uid="uid://dsd42h4bl1d0a" path="res://sprites/characters/npcs/banker/idle.png" id="2_cdkea"]
 [ext_resource type="Texture2D" uid="uid://begjv8wxy82tc" path="res://sprites/AnimationReference/idleref.png" id="2_lrcy0"]
+[ext_resource type="PackedScene" uid="uid://cbhgmb3nebt0y" path="res://nodes/objects/attacks/banker_projectile_attack.tscn" id="2_r0nv5"]
 [ext_resource type="Texture2D" uid="uid://unt3eep8bwon" path="res://sprites/characters/npcs/banker/run.png" id="3_d7mom"]
+[ext_resource type="Script" uid="uid://bvi03ctahkf7s" path="res://scripts/data/entity_attributes.gd" id="3_rox3t"]
 [ext_resource type="Texture2D" uid="uid://ngfd86xa0dj0" path="res://sprites/characters/npcs/banker/shoot.png" id="4_lrcy0"]
 [ext_resource type="Texture2D" uid="uid://dc6h5wiedmrqw" path="res://sprites/AnimationReference/transformref.png" id="5_flfyg"]
 [ext_resource type="Texture2D" uid="uid://da7b7o8n3q6re" path="res://sprites/AnimationReference/powerupref.png" id="6_0s0g2"]
+
+[sub_resource type="Resource" id="Resource_8df75"]
+resource_local_to_scene = true
+script = ExtResource("3_rox3t")
+max_hp = 10
+attack = ExtResource("2_r0nv5")
+attack_power = 5
+attack_cooldown = 1.5
+defense_multiplier = 1.0
+movement_speed = 200.0
+energy_dropped = 5
+metadata/_custom_type_script = "uid://bvi03ctahkf7s"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_527dk"]
 size = Vector2(64, 16)
@@ -427,6 +441,8 @@ _data = {
 collision_layer = 16
 collision_mask = 8
 script = ExtResource("1_uwg2o")
+attributes = SubResource("Resource_8df75")
+follow_range = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_527dk")
