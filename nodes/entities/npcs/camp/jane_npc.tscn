@@ -67,6 +67,7 @@ scale = Vector2(0.067, 0.07)
 sprite_frames = SubResource("SpriteFrames_gr7ma")
 animation = &"idle"
 offset = Vector2(0, -599.005)
+flip_h = true
 
 [node name="Label" type="Label" parent="."]
 visible = false

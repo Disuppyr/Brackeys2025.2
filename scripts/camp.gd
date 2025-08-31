@@ -59,4 +59,6 @@ func _spawn_unselected_npcs() -> void:
 			if npc_scene:
 				var npc_instance = npc_scene.instantiate()
 				npc_instance.position = spawn_node.position
+				if i > 0:
+					npc_instance.flip();
 				add_child(npc_instance)

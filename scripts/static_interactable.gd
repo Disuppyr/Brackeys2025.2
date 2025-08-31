@@ -17,3 +17,6 @@ func enter_range():
 
 func exit_range():
 	$Label.hide();
+
+func flip():
+	$StaticBody2D/Character.flip_h = true;

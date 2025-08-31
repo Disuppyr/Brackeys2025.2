@@ -3,7 +3,8 @@ class_name PlayerController
 
 enum PlayerState {
 	MOVING,
-	INTERACTING
+	INTERACTING,
+	DYING
 }
 
 ## Acceleration while in walking movement mode.
@@ -83,10 +84,12 @@ func _physics_process(delta: float) -> void:
 func _on_area_2D_entered(area: Area2D) -> void:
 	if area as Interactable != null:
 		interactable = area;
+		area.enter_range();
 
 func _on_area_2d_exited(area: Area2D) -> void:
 	if area == interactable:
 		interactable = null;
+		area.exit_range();
 
 func end_interact():
 	player_state = PlayerState.MOVING;

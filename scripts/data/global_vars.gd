@@ -34,7 +34,7 @@ func get_targetable_characters() -> Array[int]:
 	var returned = [] as Array[int];
 	for attributes in character_attributes:
 		if attributes.current_hp > 0:
-			returned.add(attributes.character);
+			returned.append(attributes.character);
 	if returned.size() == 0:
 		returned.append(player_character);
 	return returned;

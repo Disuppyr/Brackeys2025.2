@@ -1,25 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://bb04sbjpaai5f"]
+[gd_scene load_steps=31 format=3 uid="uid://bb04sbjpaai5f"]
 
-[ext_resource type="Script" uid="uid://vx3gemp3mb81" path="res://scripts/enemy.gd" id="1_3ermc"]
-[ext_resource type="PackedScene" uid="uid://p8bx1t5pamk1" path="res://nodes/objects/attacks/generic_projectile_attack.tscn" id="2_7v55f"]
-[ext_resource type="Script" uid="uid://bvi03ctahkf7s" path="res://scripts/data/entity_attributes.gd" id="3_5swa0"]
+[ext_resource type="Script" uid="uid://bg7yko1otgjox" path="res://scripts/combat_npc_controller.gd" id="1_6n8o4"]
 [ext_resource type="Texture2D" uid="uid://p4pwrlc4jug7" path="res://sprites/characters/party/jane/idle.png" id="4_1grk6"]
 [ext_resource type="Texture2D" uid="uid://dlpqaxl54nle0" path="res://sprites/characters/party/jane/run.png" id="5_4i47a"]
 [ext_resource type="Texture2D" uid="uid://cd8uhqhmr1jnc" path="res://sprites/characters/party/jane/shoot.png" id="6_odcuy"]
 [ext_resource type="Texture2D" uid="uid://dc6h5wiedmrqw" path="res://sprites/AnimationReference/transformref.png" id="7_3p73h"]
 [ext_resource type="Texture2D" uid="uid://d1vi7md1lojb1" path="res://sprites/characters/party/jane/powerup.png" id="8_fpbov"]
-
-[sub_resource type="Resource" id="Resource_2jl83"]
-resource_local_to_scene = true
-script = ExtResource("3_5swa0")
-max_hp = 10
-attack = ExtResource("2_7v55f")
-attack_power = 5
-attack_cooldown = 1.0
-defense_multiplier = 1.0
-movement_speed = 200.0
-energy_dropped = 5
-metadata/_custom_type_script = "uid://bvi03ctahkf7s"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_527dk"]
 size = Vector2(64, 16)
@@ -462,8 +448,8 @@ _data = {
 [node name="Area2D" type="Area2D" groups=["jane"]]
 collision_layer = 16
 collision_mask = 8
-script = ExtResource("1_3ermc")
-attributes = SubResource("Resource_2jl83")
+script = ExtResource("1_6n8o4")
+character = 1
 follow_range = 350.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
