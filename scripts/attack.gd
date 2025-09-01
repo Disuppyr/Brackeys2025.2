@@ -51,3 +51,5 @@ func set_power(value : int):
 func face_left():
 	if has_node("Sprite2D") and $Sprite2D:
 		$Sprite2D.flip_h = true;
+	if has_node("AnimatedSprite2D") and $AnimatedSprite2D:
+		$AnimatedSprite2D.flip_h = true;

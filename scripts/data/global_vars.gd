@@ -69,3 +69,4 @@ func get_character_node(character : CharacterAttributes.Character):
 			return get_tree().get_first_node_in_group("pearl");
 		CharacterAttributes.Character.ROSE:
 			return get_tree().get_first_node_in_group("rose");
+	return null;

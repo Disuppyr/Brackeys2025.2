@@ -27,6 +27,7 @@ var invulnerability : float = 0;
 var y_offset : float = -32.0;
 var knockback : float = 0.0;
 var damage_source : Vector2 = Vector2.ZERO;
+var attack_cooldown : float = 0.0;
 var cooldown : float = 0.0;
 var target_id : int;
 var target : Node2D;
@@ -65,6 +66,7 @@ func _process(delta: float) -> void:
 							attack_instance.face_left();
 					else:
 						attack_instance.position = Vector2(position.x + 48, position.y);
+					attack_cooldown = attributes.attack_cooldown;
 					get_parent().add_child(attack_instance);
 				else:
 					state = EnemyState.MOVING;
@@ -80,6 +82,11 @@ func _process(delta: float) -> void:
 				cooldown = 0.5;
 
 func _physics_process(delta: float) -> void:
+	if state == EnemyState.ATTACKING:
+		if attack_cooldown > 0:
+			attack_cooldown = max(0.0, attack_cooldown - delta);
+		else:
+			state = EnemyState.IDLE;
 	if state == EnemyState.MOVING:
 		if move_position.x > position.x and facing_left:
 			facing_left = false;
@@ -120,6 +127,7 @@ func assign_target():
 	if behavior == EnemyBehavior.MIXED:
 		target_pattern = randi_range(0, 2);
 	var valid_targets = GlobalVars.get_targetable_characters();
+	valid_targets.shuffle();
 	match(target_pattern):
 		EnemyBehavior.TARGET_RANDOM:
 			target_id = valid_targets.pick_random();
@@ -144,6 +152,8 @@ func _on_area_entered(area: Area2D) -> void:
 			if attack_area.source != Attack.AttackSource.ENEMY and invulnerability == 0.0 and state != EnemyState.DYING:
 				attributes.current_hp = max(0, attributes.current_hp - attack_area.power);
 				attack_area.hit();
+				if state == EnemyState.ATTACKING:
+					attack_cooldown = 0;
 				if attributes.current_hp == 0:
 					state = EnemyState.DYING;
 					knockback = attack_area.knockback * 10;
@@ -158,7 +168,8 @@ func _on_area_entered(area: Area2D) -> void:
 					state = EnemyState.HURTING;
 					knockback = attack_area.knockback;
 					# TEMP
-					damage_source = (get_tree().get_first_node_in_group("player") as CombatPlayerController).position;
+					if GlobalVars.get_character_node(attack_area.source) != null:
+						damage_source = GlobalVars.get_character_node(attack_area.source).position;
 					invulnerability = 0.8;
 					$AnimationPlayer.play("hurt");
 

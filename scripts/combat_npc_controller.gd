@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 			if assign_target() == null:
 				assign_target();
 			if target:
-				if abs(target.position.x - position.x) <= follow_range and abs(target.position.y - position.y) <= 32.0:
+				if abs(abs(target.position.x - position.x) - follow_range) <= 40 and abs(target.position.y - position.y) <= 8.0:
 					state = EnemyState.ATTACKING;
 					cooldown = GlobalVars.character_attributes[character].attack_cooldown;
 					if target.position.x > position.x and facing_left:
@@ -62,13 +62,13 @@ func _process(delta: float) -> void:
 				else:
 					state = EnemyState.MOVING;
 					state_machine.travel("Run")
-					if abs(target.position.x - position.x) <= follow_range:
+					if abs(abs(target.position.x - position.x) - follow_range) <= 40:
 						move_position = Vector2(position.x, target.position.y);
 					else:
-						if position.x < target.position.x:
-							move_position = Vector2(target.position.x - (follow_range * randf_range(0.6, 1.0)), target.position.y);
+						if target.position.x > 0:
+							move_position = Vector2(target.position.x - (follow_range * randf_range(0.9, 1.0)), target.position.y);
 						else:
-							move_position = Vector2(target.position.x + (follow_range * randf_range(0.6, 1.0)), target.position.y);
+							move_position = Vector2(target.position.x + (follow_range * randf_range(0.9, 1.0)), target.position.y);
 			else:
 				cooldown = 0.5;
 
@@ -110,6 +110,7 @@ func _physics_process(delta: float) -> void:
 
 func assign_target():
 	var enemies = get_tree().get_nodes_in_group("enemy") as Array[Enemy];
+	enemies.shuffle();
 	var enemy_targeted = null;
 	if enemies.size() > 0:
 		for enemy in enemies:

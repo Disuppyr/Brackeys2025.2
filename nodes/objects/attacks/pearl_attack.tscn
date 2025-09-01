@@ -61,7 +61,7 @@ script = ExtResource("1_llhv1")
 source = 2
 power = 1
 pierce = 1
-knockback = 20.0
+knockback = 80.0
 duration = 0.5
 sprite = ExtResource("2_fupt2")
 

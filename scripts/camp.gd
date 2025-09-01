@@ -6,6 +6,8 @@ func _ready() -> void:
 	# Replace the default player with the selected character
 	_spawn_selected_character()
 	_spawn_unselected_npcs()
+	for i in range(4):
+		GlobalVars.character_attributes[i].current_hp = GlobalVars.character_attributes[i].max_hp;
 
 func _spawn_selected_character() -> void:
 	if not default_player:

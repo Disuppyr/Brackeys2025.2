@@ -518,7 +518,7 @@ script = ExtResource("1_pqavp")
 shape = SubResource("RectangleShape2D_473v0")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 4
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 y_sort_enabled = true
@@ -561,6 +561,7 @@ monitorable = false
 position = Vector2(250, 0)
 shape = SubResource("RectangleShape2D_p1at1")
 
+[connection signal="area_entered" from="Area2D" to="." method="on_area_enter_attack"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2D_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_exited"]
 [connection signal="area_entered" from="TargetingArea" to="." method="_on_targeting_area_entered"]

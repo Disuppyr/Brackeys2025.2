@@ -450,7 +450,7 @@ collision_layer = 16
 collision_mask = 8
 script = ExtResource("1_cto2l")
 character = 2
-follow_range = 350.0
+follow_range = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_527dk")

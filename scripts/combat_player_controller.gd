@@ -13,6 +13,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta);
+	if invulnerability > 0.0:
+		invulnerability = max(0.0, invulnerability - delta);
 	if facing_left && $TargetingArea.rotation == 0:
 		$TargetingArea.rotation = PI;
 	if !facing_left && $TargetingArea.rotation != 0:
@@ -59,14 +61,14 @@ func on_area_enter_attack(area: Area2D) -> void:
 					knockback = attack_area.knockback * 10;
 					#state_machine.travel("Death");
 					invulnerability = 0.8;
-					$AnimationPlayer.play("hurt");
+					$Node2D/AnimatedSprite2D/AnimationPlayer.play("hurt");
 					GlobalVars.character_attributes[GlobalVars.player_character].incapacitated = true;
 				else:
 					knockback = attack_area.knockback;
 					# TEMP
 					#damage_source = (get_tree().get_first_node_in_group("player") as CombatPlayerController).position;
 					invulnerability = 0.8;
-					$AnimationPlayer.play("hurt");
+					$Node2D/AnimatedSprite2D/AnimationPlayer.play("hurt");
 
 func _on_targeting_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy"):

@@ -52,6 +52,15 @@ func _on_confirm_button_pressed() -> void:
 		if i != selected_character_index:
 			GlobalVars.unselected_character_scenes.append(character_scenes[i])
 	print("Confirmed character selection: ", character_scenes[selected_character_index])
+	match selected_character_index:
+		0:
+			GlobalVars.player_character = CharacterAttributes.Character.BONNIE
+		1:
+			GlobalVars.player_character = CharacterAttributes.Character.PEARL
+		2:
+			GlobalVars.player_character = CharacterAttributes.Character.ROSE
+		3:
+			GlobalVars.player_character = CharacterAttributes.Character.JANE
 	# Change to the camp scene
 	get_tree().change_scene_to_file("res://scenes/camp.tscn")
 

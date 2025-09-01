@@ -27,5 +27,5 @@ func _set_current_hp(value):
 	changed.emit();
 
 func _set_current_energy(value):
-	current_hp = value;
+	current_energy = value;
 	changed.emit();
