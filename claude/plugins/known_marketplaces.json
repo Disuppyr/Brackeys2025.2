@@ -1,0 +1,18 @@
+{
+  "claude-plugins-official": {
+    "source": {
+      "source": "git",
+      "url": "https://github.com/anthropics/claude-plugins-official.git"
+    },
+    "installLocation": "C:\\Users\\Owner\\.claude\\plugins\\marketplaces\\claude-plugins-official",
+    "lastUpdated": "2026-07-31T23:13:43.961Z"
+  },
+  "skillsmith": {
+    "source": {
+      "source": "git",
+      "url": "https://github.com/jame581/skillsmith.git"
+    },
+    "installLocation": "C:\\Users\\Owner\\.claude\\plugins\\marketplaces\\skillsmith",
+    "lastUpdated": "2026-07-31T23:30:00.000Z"
+  }
+}

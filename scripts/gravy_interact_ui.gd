@@ -15,7 +15,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_cancel"):
 		if showing_dialogue:
 			if do_scene_transition:
-				get_tree().change_scene_to_file("res://scenes/level1.tscn")
+				get_tree().change_scene_to_file(GlobalVars.get_next_stage_scene())
 			else:
 				showing_dialogue = false;
 				end_interact();
@@ -37,7 +37,7 @@ func start_mission():
 
 func end_interact():
 	if do_scene_transition:
-		get_tree().change_scene_to_file("res://scenes/level1.tscn")
+		get_tree().change_scene_to_file(GlobalVars.get_next_stage_scene())
 	else:
 		get_tree().call_group("player", "end_interact")
 		queue_free()

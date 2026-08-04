@@ -22,6 +22,12 @@ var current_energy : int = 0:
 
 var incapacitated : bool = false;
 
+## Reputation Actions state (reset each Camp Prep phase, see camp.gd)
+var allied_with_player : bool = false;
+var sitting_out : bool = false;
+var conspired_this_phase : bool = false;
+var boasted_this_phase : bool = false;
+
 func _set_current_hp(value):
 	super(value);
 	changed.emit();

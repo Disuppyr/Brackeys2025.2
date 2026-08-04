@@ -1,7 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://bknxd4ogk2bol"]
+[gd_scene load_steps=11 format=3 uid="uid://bknxd4ogk2bol"]
 
 [ext_resource type="Script" uid="uid://csf043anenhbb" path="res://scripts/attack.gd" id="1_llhv1"]
 [ext_resource type="Texture2D" uid="uid://db7etcfhpllca" path="res://sprites/projectiles/wind.png" id="2_fupt2"]
+[ext_resource type="Texture2D" uid="uid://d24f2m65lowkm" path="res://sprites/placeholder/placeholder_dot.png" id="3_dot"]
+
+[sub_resource type="Gradient" id="Gradient_trail"]
+colors = PackedColorArray(0.95, 0.6, 0.9, 1, 0.95, 0.6, 0.9, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_trail"]
+gradient = SubResource("Gradient_trail")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_trail"]
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 0.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_max = 0.8
+color_ramp = SubResource("GradientTexture1D_trail")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0rup0"]
 radius = 20.0
@@ -73,6 +90,14 @@ texture_filter = 1
 position = Vector2(0, -63)
 scale = Vector2(0.0903226, 0.0903227)
 sprite_frames = SubResource("SpriteFrames_oy0u5")
+
+[node name="Trail" type="GPUParticles2D" parent="."]
+position = Vector2(0, -63)
+amount = 10
+lifetime = 0.25
+local_coords = false
+texture = ExtResource("3_dot")
+process_material = SubResource("ParticleProcessMaterial_trail")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

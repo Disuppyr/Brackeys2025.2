@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3xng4b8rsk7d"]
 
 [ext_resource type="Script" uid="uid://bchjkkt6ug3ch" path="res://scripts/projectile_attack.gd" id="1_vut3j"]
-[ext_resource type="PackedScene" uid="uid://c8bi803y4mm21" path="res://nodes/objects/attacks/generic_attack.tscn" id="2_7glk2"]
+[ext_resource type="PackedScene" path="res://nodes/objects/attacks/rose_attack.tscn" id="2_7glk2"]
 
 [sub_resource type="Curve2D" id="Curve2D_hefdf"]
 _data = {

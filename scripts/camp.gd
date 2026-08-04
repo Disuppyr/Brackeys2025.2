@@ -8,6 +8,10 @@ func _ready() -> void:
 	_spawn_unselected_npcs()
 	for i in range(4):
 		GlobalVars.character_attributes[i].current_hp = GlobalVars.character_attributes[i].max_hp;
+		GlobalVars.character_attributes[i].conspired_this_phase = false;
+		GlobalVars.character_attributes[i].boasted_this_phase = false;
+		GlobalVars.character_attributes[i].allied_with_player = false;
+		GlobalVars.character_attributes[i].sitting_out = false;
 
 func _spawn_selected_character() -> void:
 	if not default_player:

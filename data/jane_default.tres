@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="CharacterAttributes" load_steps=3 format=3 uid="uid://cvnst84jsuqxo"]
+[gd_resource type="Resource" script_class="CharacterAttributes" load_steps=4 format=3 uid="uid://cvnst84jsuqxo"]
 
 [ext_resource type="PackedScene" uid="uid://cvrx511b7uk6d" path="res://nodes/objects/attacks/jane_projectile_attack.tscn" id="1_av7i5"]
 [ext_resource type="Script" uid="uid://b3upar75roe87" path="res://scripts/data/character_attributes.gd" id="1_vwi6a"]
+[ext_resource type="PackedScene" uid="uid://bbhk7tyy1o6u3" path="res://nodes/objects/attacks/specials/jane_special_projectile.tscn" id="2_special"]
 
 [resource]
 script = ExtResource("1_vwi6a")
@@ -14,8 +15,9 @@ heal_amount = 10
 heal_cost = 15
 max_hp = 40
 attack = ExtResource("1_av7i5")
+special_attack = ExtResource("2_special")
 attack_power = 5
-attack_cooldown = 1.0
+attack_cooldown = 0.35
 defense_multiplier = 1.0
 movement_speed = 300.0
 energy_dropped = 5

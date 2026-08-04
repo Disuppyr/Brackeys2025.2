@@ -21,14 +21,62 @@ script = ExtResource("1_r5gmu")
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Button3")
-focus_neighbor_bottom = NodePath("../Button2")
+focus_neighbor_bottom = NodePath("../Conspire")
 theme_override_font_sizes/font_size = 18
 text = "Use Fortune Cookie"
+
+[node name="Conspire" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Button")
+focus_neighbor_bottom = NodePath("../Persuade")
+theme_override_font_sizes/font_size = 18
+text = "Conspire"
+
+[node name="Persuade" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Conspire")
+focus_neighbor_bottom = NodePath("../Fight")
+theme_override_font_sizes/font_size = 18
+text = "Persuade"
+
+[node name="Fight" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Persuade")
+focus_neighbor_bottom = NodePath("../Defamation")
+theme_override_font_sizes/font_size = 18
+text = "Fight"
+
+[node name="Defamation" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Fight")
+focus_neighbor_bottom = NodePath("../Commendation")
+theme_override_font_sizes/font_size = 18
+text = "Defamation"
+
+[node name="Commendation" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Defamation")
+focus_neighbor_bottom = NodePath("../Boast")
+theme_override_font_sizes/font_size = 18
+text = "Commendation"
+
+[node name="Boast" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Commendation")
+focus_neighbor_bottom = NodePath("../Button2")
+theme_override_font_sizes/font_size = 18
+text = "Boast"
 
 [node name="Button2" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-focus_neighbor_top = NodePath("../Button")
+focus_neighbor_top = NodePath("../Boast")
 focus_neighbor_bottom = NodePath("../Button3")
 theme_override_font_sizes/font_size = 18
 text = "Chat"
@@ -60,5 +108,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="pressed" from="Button" to="." method="use_fortune_cookie"]
+[connection signal="pressed" from="Conspire" to="." method="conspire"]
+[connection signal="pressed" from="Persuade" to="." method="persuade"]
+[connection signal="pressed" from="Fight" to="." method="fight"]
+[connection signal="pressed" from="Defamation" to="." method="defamation"]
+[connection signal="pressed" from="Commendation" to="." method="commendation"]
+[connection signal="pressed" from="Boast" to="." method="boast"]
 [connection signal="pressed" from="Button2" to="." method="chat"]
 [connection signal="pressed" from="Button3" to="." method="end_interact"]

@@ -1,0 +1,108 @@
+---
+name: brain-init
+description: >
+  Set up the Claude Brain Logseq graph (first-time) or add a new project page.
+  Triggers: "init brain", "setup brain", "init brain project <name>", "add
+  project to brain". Don't fire for loads, saves, or status checks — those are
+  handled by brain-load, brain-save, and brain-status.
+---
+
+# Brain Init
+
+Initialize the Claude Brain Logseq graph or add a new project page to an existing graph.
+
+## Prerequisites
+
+Resolve the graph path per `skills/_shared/path-resolution.md`. If the resolved folder is empty or missing core files, this skill performs first-time setup (below). Otherwise it adds a new project to the existing graph.
+
+## First-Time Graph Setup
+
+If the graph folder is empty or missing core files, initialize it:
+
+1. Create `logseq/config.edn` with minimal Logseq config:
+
+```clojure
+{:meta/version 1
+ :preferred-format "Markdown"
+ :journal/page-title-format "yyyy-MM-dd"
+ :journal/file-name-format "yyyy_MM_dd"}
+```
+
+2. Create `pages/Index.md` — the master index page:
+
+```markdown
+type:: index
+description:: Master index of Claude's brain — all projects and key pages
+
+- ## Projects
+  - _No projects yet. Use "init brain project [name]" to add one._
+- ## Quick Links
+  - [[Meta]] — preferences, working style, conventions
+  - [[Decisions]] — cross-project decision log
+```
+
+3. Create `pages/Meta.md` — for storing user preferences and conventions:
+
+```markdown
+type:: meta
+last-updated:: {{today}}
+
+- ## User Preferences
+  - _Add preferences as they emerge from working sessions._
+- ## Conventions
+  - _Add naming conventions, coding style preferences, etc._
+- ## Tools & Stack
+  - _Add commonly used tools, languages, frameworks._
+```
+
+4. Create `pages/Decisions.md` — cross-project decision log:
+
+```markdown
+type:: decisions
+last-updated:: {{today}}
+
+- ## Decision Log
+  - _Decisions that span multiple projects or are general in nature._
+```
+
+5. Create the `journals/` directory with a `.gitkeep` file to ensure it persists in version control. Use `mkdir -p` via Bash or create `journals/.gitkeep` with the Write tool. This directory must exist before brain-save can write journal entries — do not skip this step.
+
+Replace `{{today}}` with the current date in `yyyy-MM-dd` format.
+
+Confirm to the user that the graph is ready and they can open it in Logseq.
+
+After confirmation, write a journey-log entry per `skills/_shared/journey-log.md` with the activity line: `initialized graph at <graphPath>`.
+
+## Adding a New Project
+
+When the user wants to add a project (e.g., "add MyProject to brain", "init brain project GameDev"):
+
+1. Determine the project name from the user's request.
+
+2. Ask the user for a brief description and any initial context for the project (tech stack, repo location, key info) — gather this **before** writing the page. The template (`references/templates.md`) uses the same description in three places: `focus::`, the Digest Identity bullet, and `## Overview`. If the description exceeds **120 bytes**, use a short form for `focus::` (the digest property cap — see `skills/_shared/digest.md`) and keep the full text in `## Overview` and the Digest Identity bullet.
+
+3. Create the project page at `pages/Projects___<ProjectName>.md` using the template from `references/templates.md`, substituting the gathered description into `focus::`, the Digest Identity bullet, and `## Overview`. The triple underscore `___` is how Logseq represents the `/` namespace separator in filenames — so this page will appear as `Projects/ProjectName` in the Logseq sidebar.
+
+4. **Measure the page and resolve `{{page_size}}`.** This is the one placeholder that can only be filled *after* the Write: run `wc -c` on the new file, round to the nearest 10 bytes, then Edit the literal `{{page_size}}` bullet to the rounded figure (`references/templates.md` has the rounding rule and why an exact figure would be a small lie). Do not skip this — a fresh page ships with `{{page_size}}` still in it until this step runs.
+
+5. **Confirm no template placeholder survives.** Check for **this template's three placeholders specifically**, not for `{{` in general:
+   ```bash
+   grep -cE '\{\{(today|project_description|page_size)\}\}' "pages/Projects___<ProjectName>.md"
+   ```
+   must return `0`. A bare `{{` search would be wrong twice over: `{{query}}` and `{{embed}}` are legitimate Logseq macros that `code-in-braces` explicitly whitelists, and a user's project description may contain `{{` of its own — matching either would send you "replacing" content that was never a placeholder. If it doesn't, find and replace the remaining placeholder before continuing — a literal `{{...}}` left in the graph is a `code-in-braces` violation, exactly the kind of format break this plugin exists to prevent.
+
+6. Update `pages/Index.md` — add a link to the new project under the Projects section:
+   - `[[Projects/<ProjectName>]] — <brief description>`
+
+Confirm the project page was created and remind the user they can now use "save to brain" during work sessions and "load [project]" to restore context.
+
+After confirmation, write a journey-log entry per `skills/_shared/journey-log.md` with the activity line: `created project [[Projects/<ProjectName>]]`.
+
+## Date Format
+
+Always use `yyyy-MM-dd` format for dates (e.g., `2026-04-12`). This matches Logseq's journal format and sorts correctly.
+
+## Important Notes
+
+- See `CLAUDE.md` "Logseq format invariants" for namespace separators, bullet format, properties, link syntax, and date format.
+- When creating the `journals/` directory, use Bash (`mkdir -p`) or the Write tool to ensure it exists — do not skip this step.

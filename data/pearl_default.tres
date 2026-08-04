@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="CharacterAttributes" load_steps=3 format=3 uid="uid://df0u02blodday"]
+[gd_resource type="Resource" script_class="CharacterAttributes" load_steps=4 format=3 uid="uid://df0u02blodday"]
 
 [ext_resource type="Script" uid="uid://b3upar75roe87" path="res://scripts/data/character_attributes.gd" id="1_4js2x"]
 [ext_resource type="PackedScene" uid="uid://oexlf7ooykpq" path="res://nodes/objects/attacks/pearl_projectile_attack.tscn" id="1_ndjbf"]
+[ext_resource type="PackedScene" uid="uid://cckafrwaxxo1c" path="res://nodes/objects/attacks/specials/pearl_special_projectile.tscn" id="2_special"]
 
 [resource]
 script = ExtResource("1_4js2x")
@@ -14,8 +15,9 @@ heal_amount = 10
 heal_cost = 15
 max_hp = 40
 attack = ExtResource("1_ndjbf")
+special_attack = ExtResource("2_special")
 attack_power = 5
-attack_cooldown = 1.0
+attack_cooldown = 0.35
 defense_multiplier = 1.0
 movement_speed = 300.0
 energy_dropped = 5

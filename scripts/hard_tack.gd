@@ -9,9 +9,7 @@ func interact(_player : Node):
 	state_machine.travel("collect");
 	$Label.hide();
 	monitorable = false;
-	for attributes in GlobalVars.character_attributes:
-		if !attributes.incapacitated:
-			attributes.current_hp = min(attributes.max_hp, attributes.current_hp + 20);
+	GlobalVars.pick_up_item(GlobalVars.ItemType.HARD_TACK);
 
 func enter_range():
 	$Label.show();

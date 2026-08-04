@@ -21,6 +21,7 @@ var do_energy_boost : bool = false;
 var do_power_boost : bool = false;
 
 func _ready() -> void:
+	GlobalVars.stage_level = true;
 	for attributes in GlobalVars.character_attributes:
 		attributes.current_hp = attributes.max_hp;
 	on_spawn_next_wave.connect(await spawn_next_wave);
@@ -35,10 +36,22 @@ func _spawn_unselected_npcs_level1() -> void:
 		"res://nodes/entities/player_characters/rose.tscn": "res://nodes/entities/npcs/combat/party/rose_party.tscn",
 		"res://nodes/entities/player_characters/jane.tscn": "res://nodes/entities/npcs/combat/party/jane_party.tscn"
 	}
+	var character_to_enum = {
+		"res://nodes/entities/player_characters/bonnie.tscn": CharacterAttributes.Character.BONNIE,
+		"res://nodes/entities/player_characters/pearl.tscn": CharacterAttributes.Character.PEARL,
+		"res://nodes/entities/player_characters/rose.tscn": CharacterAttributes.Character.ROSE,
+		"res://nodes/entities/player_characters/jane.tscn": CharacterAttributes.Character.JANE
+	}
 	for i in range(GlobalVars.unselected_character_scenes.size()):
 		var spawn_node = get_node_or_null("NPCSpawn%d" % (i+1))
 		if spawn_node:
-			var npc_scene_path = character_to_npc.get(GlobalVars.unselected_character_scenes[i], null)
+			var scene_path = GlobalVars.unselected_character_scenes[i];
+			var character_enum = character_to_enum.get(scene_path, null);
+			if character_enum != null:
+				var attributes = GlobalVars.character_attributes[character_enum];
+				if attributes.incapacitated or attributes.sitting_out:
+					continue;
+			var npc_scene_path = character_to_npc.get(scene_path, null)
 			if npc_scene_path:
 				var npc_scene = load(npc_scene_path)
 				if npc_scene:
@@ -85,6 +98,8 @@ func spawn_next_wave():
 		current_wave += 1;
 	else:
 		# Last wave finished
+		if GlobalVars.last_KO != -1:
+			GlobalVars.award_stardom(GlobalVars.last_KO, GlobalVars.STARDOM_STAGE_CLEAR_BONUS);
 		get_tree().change_scene_to_file("res://scenes/end.tscn")
 		on_stage_complete.emit();
 

@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://duf2fx8msim2t"]
+
+[ext_resource type="Script" uid="uid://cgew0bbb6u3x0" path="res://scripts/camera_shake.gd" id="1_camshake"]
+[ext_resource type="Script" uid="uid://qe4q4qe2ddsg" path="res://scripts/stage_manager.gd" id="1_wwpf4"]
+[ext_resource type="Script" uid="uid://b7018rjg6lhj2" path="res://scripts/data/enemy_wave.gd" id="2_6sh32"]
+[ext_resource type="PackedScene" uid="uid://cjls4mtgpyp0g" path="res://sprites/Explosion/explosion.tscn" id="2_dwgg1"]
+[ext_resource type="PackedScene" uid="uid://dkq5niclic8w" path="res://nodes/ui/stage_ui.tscn" id="2_m7ahb"]
+[ext_resource type="PackedScene" uid="uid://cnp0xg4tyvt5e" path="res://nodes/entities/npcs/combat/enemy/lawman.tscn" id="3_lawman"]
+[ext_resource type="PackedScene" uid="uid://cxqb16awbwkfg" path="res://nodes/objects/items/hard_tack.tscn" id="3_ru4tf"]
+[ext_resource type="PackedScene" uid="uid://kurdxpdsu5i0" path="res://nodes/entities/npcs/combat/enemy/banker.tscn" id="4_d3jkd"]
+[ext_resource type="PackedScene" path="res://nodes/entities/npcs/combat/enemy/witch.tscn" id="5_witch"]
+[ext_resource type="PackedScene" path="res://nodes/objects/scenery/CountyJailBackground.tscn" id="7_jail"]
+[ext_resource type="PackedScene" uid="uid://dbfa4xtpn7q2t" path="res://nodes/entities/combat_player.tscn" id="8_bbk5w"]
+[ext_resource type="AudioStream" uid="uid://l2ruqd7aepcl" path="res://music/westsong.wav" id="11_u3awl"]
+
+[sub_resource type="Resource" id="Resource_bbk5w"]
+script = ExtResource("2_6sh32")
+spawn_location = 1
+enemy_scene = ExtResource("3_lawman")
+enemy_count = 2
+spawn_interval = 5.0
+next_wave_delay = 20.0
+metadata/_custom_type_script = "uid://b7018rjg6lhj2"
+
+[sub_resource type="Resource" id="Resource_2ku1j"]
+script = ExtResource("2_6sh32")
+enemy_scene = ExtResource("4_d3jkd")
+enemy_count = 4
+spawn_interval = 1.0
+next_wave_delay = -1.0
+metadata/_custom_type_script = "uid://b7018rjg6lhj2"
+
+[sub_resource type="Resource" id="Resource_f31uk"]
+script = ExtResource("2_6sh32")
+spawn_location = 1
+enemy_scene = ExtResource("5_witch")
+enemy_count = 3
+spawn_interval = 2.0
+next_wave_delay = 15.0
+metadata/_custom_type_script = "uid://b7018rjg6lhj2"
+
+[sub_resource type="Resource" id="Resource_gnai3"]
+script = ExtResource("2_6sh32")
+spawn_location = 0
+enemy_scene = ExtResource("3_lawman")
+enemy_count = 2
+spawn_interval = 2.0
+next_wave_delay = -1.0
+metadata/_custom_type_script = "uid://b7018rjg6lhj2"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3jkd"]
+size = Vector2(88, 26)
+
+[node name="StageTemplate" type="Node2D" unique_id=1377896408]
+y_sort_enabled = true
+script = ExtResource("1_wwpf4")
+enemy_waves = Array[ExtResource("2_6sh32")]([SubResource("Resource_bbk5w"), SubResource("Resource_2ku1j"), SubResource("Resource_f31uk"), SubResource("Resource_gnai3")])
+spawn_pos_left = Vector2(-450, 185)
+spawn_pos_right = Vector2(450, 185)
+explosion = ExtResource("2_dwgg1")
+item_drops = Array[PackedScene]([ExtResource("3_ru4tf")])
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1420556663]
+script = ExtResource("1_camshake")
+
+[node name="StageUI" parent="Camera2D" unique_id=1413991536 instance=ExtResource("2_m7ahb")]
+offset_top = -300.0
+offset_bottom = -300.0
+
+[node name="Background" parent="." unique_id=436503737 instance=ExtResource("7_jail")]
+
+[node name="CharacterBody2D" parent="." unique_id=1468087241 instance=ExtResource("8_bbk5w")]
+y_sort_enabled = true
+position = Vector2(-224, 184)
+
+[node name="NPCSpawn1" type="Node2D" parent="." unique_id=520951842]
+y_sort_enabled = true
+position = Vector2(-328, 128)
+
+[node name="NPCSpawn2" type="Node2D" parent="." unique_id=147758589]
+y_sort_enabled = true
+position = Vector2(-400, 168)
+
+[node name="NPCSpawn3" type="Node2D" parent="." unique_id=786262210]
+y_sort_enabled = true
+position = Vector2(-328, 192)
+
+[node name="Area2D" type="StaticBody2D" parent="." unique_id=1806305659]
+collision_layer = 2
+collision_mask = 17
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1035314865]
+polygon = PackedVector2Array(496, 80, -488, 80, 488, 88, 488, 288, -488, 288, -488, 88, 488, 88, -496, 80, -496, 296, 496, 296)
+
+[node name="Area2D2" type="StaticBody2D" parent="." unique_id=571727008]
+collision_layer = 2
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=301963675]
+position = Vector2(-320, 240)
+shape = SubResource("RectangleShape2D_d3jkd")
+
+[node name="Timer" type="Timer" parent="." unique_id=1071954734]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1885783946]
+stream = ExtResource("11_u3awl")
+playback_type = 1
+
+[connection signal="timeout" from="Timer" to="." method="spawn_next_wave"]

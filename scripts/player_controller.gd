@@ -9,11 +9,11 @@ enum PlayerState {
 }
 
 ## Acceleration while in walking movement mode.
-@export var walk_acceleration : float = 60.0;
+@export var walk_acceleration : float = 90.0;
 ## Max movement speed while in walking movement mode.
 @export var max_walk_speed : float = 300.0;
 ## Slowdown multiplier for both movement modes when no directional input is being held.[br][code]0.0[/code] stops movement immediately, while [code]1.0[/code] enables frictionless movement.
-@export_range(0, 1.0) var slowdown_multiplier : float = 0.7;
+@export_range(0, 1.0) var slowdown_multiplier : float = 0.55;
 ## Spawn position for the player.
 @export var spawn_position : Vector2 = Vector2.ZERO;
 
@@ -54,32 +54,31 @@ func _input(_event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if player_state == PlayerState.MOVING:
-		# Update shooting timer
+		# Update shooting timer (drives the Shoot animation only -- no longer blocks movement)
 		if is_shooting:
 			shoot_frame_timer -= delta;
-			velocity = Vector2.ZERO;
 			if shoot_frame_timer <= 0.0:
 				is_shooting = false;
+
+		# Handle horizontal movement
+		if normalized_input.length() > 0.0:
+			square_velocity += normalized_input * walk_acceleration;
+			if square_velocity.length() > max_walk_speed:
+				square_velocity = square_velocity.normalized() * max_walk_speed;
 		else:
-			# Handle horizontal movement
-			if normalized_input.length() > 0.0:
-				square_velocity += normalized_input * walk_acceleration;
-				if square_velocity.length() > max_walk_speed:
-					square_velocity = square_velocity.normalized() * max_walk_speed;
-			else:
-				square_velocity *= slowdown_multiplier;
-			
-			# Set horizontal velocity and move
-			velocity = Vector2(square_velocity.x, square_velocity.y * 0.5);
-			if velocity.x > 0 && facing_left:
-				facing_left = false;
-			if velocity.x < 0 && !facing_left:
-				facing_left = true;
+			square_velocity *= slowdown_multiplier;
+
+		# Set horizontal velocity and move
+		velocity = Vector2(square_velocity.x, square_velocity.y * 0.5);
+		if velocity.x > 0 && facing_left:
+			facing_left = false;
+		if velocity.x < 0 && !facing_left:
+			facing_left = true;
 		move_and_slide();
-		
+
 		# Update animations based on state
 		_update_animations();
-		
+
 		# Update sprite flip
 		if sprite:
 			sprite.flip_h = facing_left;

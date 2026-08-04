@@ -239,3 +239,22 @@ parameters/conditions/win = false
 stream = ExtResource("5_s4tl2")
 autoplay = true
 playback_type = 1
+
+[node name="OutcomeLabel" type="Label" parent="."]
+offset_left = 260.0
+offset_top = 470.0
+offset_right = 740.0
+offset_bottom = 540.0
+theme_override_font_sizes/font_size = 22
+text = "Stage clear."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 410.0
+offset_top = 550.0
+offset_right = 590.0
+offset_bottom = 590.0
+theme_override_font_sizes/font_size = 18
+text = "Back to Camp"

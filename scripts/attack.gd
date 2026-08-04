@@ -26,8 +26,20 @@ func _ready() -> void:
 		$AnimatedSprite2D.play("default");
 	$Timer.start(duration);
 
-func hit():
+const DamageNumberScene = preload("res://nodes/ui/damage_number.tscn");
+
+func hit(damage_amount : int = 0):
 	pierced += 1;
+	GlobalVars.hitstop();
+	if damage_amount > 0:
+		var dmg_instance = DamageNumberScene.instantiate();
+		dmg_instance.global_position = global_position;
+		dmg_instance.amount = damage_amount;
+		get_tree().current_scene.add_child(dmg_instance);
+	if source == AttackSource.ENEMY:
+		var camera = get_viewport().get_camera_2d();
+		if camera and camera.has_method("shake"):
+			camera.shake(4.0, 0.15);
 	if pierced >= pierce:
 		if !$Timer.is_stopped():
 			$Timer.stop();
